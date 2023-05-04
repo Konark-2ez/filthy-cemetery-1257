@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="./images/BudgetBud.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style/dashboard.css">
+</head>
+
+<body>
+
+    <!-- **************************************** NAV - BAR **************************************** -->
+
+    <div class="nav"></div>
+
+    <!-- **************************************** BODY **************************************** -->
+
+    <div class="welcome-header">Welcome to Budgetbuddy! We're glad you are here.</div>
+
+    <div class="dash-container">
+        <div class="left-cont">
+            <div class="budget-input budget-box">
+                <label for="d-budget">Please Enter Your Budget</label>
+                <div><input type="number" id="d-budget" placeholder="0.00" class="budget-input-box"></div>
+                <button id="add-budget" class="add-budget-button">Add Budget</button>
+            </div>
+            <div class="expense-input budget-box">
+                <label for="expense-title">Please Enter Your Expense</label><input type="text" id="expense-title"
+                    class="budget-input-box" placeholder="Expenses">
+                <label for="expense-amout">Amount</label><input type="text" id="expense-amout" placeholder="0.00"
+                    class="budget-input-box">
+                <button id="add-expense" class="add-budget-button">Add Expense</button>
+            </div>
+        </div>
+        <div class="right-cont">
+            <div class="display-budget-plan">
+                <div class="budget-display">
+                    <h2 class="budget-title">BUDGET</h2>
+                    <div class="display-image">
+                        <img src="./images/data-report-svgrepo-com.png" alt="" class="budget-img">
+                    </div>
+                    <p class="budget-amount green">₹<span id="budget-amount-input">2500</span></p>
+                </div>
+                <div class="budget-display">
+                    <h2 class="budget-title">EXPENSES</h2>
+                    <div class="display-image">
+                        <img src="./images/credit-card-svgrepo-com.png" alt="" class="budget-img">
+                    </div>
+                    <p class="budget-amount pink">₹<span id="expense-amount-input">2500</span></p>
+                </div>
+                <div class="budget-display">
+                    <h2 class="budget-title">BALANCE</h2>
+                    <div class="display-image">
+                        <img src="./images/wallet-svgrepo-com.png" alt="" class="budget-img">
+                    </div>
+                    <p class="budget-amount red">₹<span id="balance-amount-input">2500</span></p>
+                </div>
+            </div>
+            <div class="recent-expenses">
+                <table class="expenses-history">
+                    <thead>
+                        <tr>
+                            <th>Expense Title</th>
+                            <th>Expense Value</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>-shopping groceries</td>
+                            <td>1000</td>
+                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>-shopping groceries</td>
+                            <td>1000</td>
+                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>-shopping groceries</td>
+                            <td>1000</td>
+                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>-shopping groceries</td>
+                            <td>1000</td>
+                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>-shopping groceries</td>
+                            <td>1000</td>
+                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+        <!-- **************************************** NAV - BAR **************************************** -->
+
+        <div class="footer"></div>
+
+</body>
+
+</html>

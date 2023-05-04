@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* To Remove the arrows in input type number  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.nav, .footer{
+    border: 1px solid;
+    height: 5rem;
+}
+
+.footer{
+    margin-top: 20px;
+}
+
+.welcome-header{
+    text-align: center;
+    background-color: paleturquoise;
+    padding: 10px;
+    color: black;
+    font-weight: 700;
+    font-family: system-ui;
+    font-size: 1.15rem;
+    margin-top: 16px;
+}
+
+.dash-container{
+    /* border: 1px solid black; */
+    width: 90%;
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.left-cont{
+    font-size: 1.3rem;
+}
+
+.budget-box{
+    border: 1px solid;
+    padding: 10px 15px;
+    padding-bottom: 18px;
+    /* margin-bottom: 4rem; */
+    border-radius: 5px;
+    border: 2px solid #1e3c5e;
+}
+
+.budget-input{
+    border: 1px solid;
+    padding: 10px 15px;
+    padding-bottom: 18px;
+    margin-bottom: 4rem;
+    border-radius: 5px;
+    border: 2px solid #c42f94;
+}
+
+.budget-input > div{
+    width: 27rem;
+}
+
+ #add-budget, #expense-title, #expense-amout{
+    display: block;
+}
+
+.budget-input-box{
+    font-size: 1rem;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    margin: 0px 0px 9px;
+    border-radius: 5px;
+    outline: none;
+    border-width: thin;
+}
+
+.add-budget-button{
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    border-width: thin;
+    background-color: inherit;
+    border: 1px solid #c52f93;
+    color: #c53095;
+    cursor: pointer;
+}
+
+#add-budget:hover{
+    color: white;
+    background-color: #c42f94;
+}
+
+#add-budget{
+    margin-top: 1rem;
+}
+
+#add-expense{
+    border-color: #1e3c5d;
+    color: #1f3c5e;
+    margin-top: 0.5rem;
+}
+
+#add-expense:hover{
+    color: white;
+    background-color: #1f3c5e;
+}
+
+.right-cont{
+    width: 100%;
+    margin-left: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 10px;
+}
+
+.display-budget-plan{
+    display: flex;
+    justify-content: space-around;
+    /* padding: 10px; */
+}
+
+.display-budget-plan > .budget-display{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-budget-plan > .budget-display .budget-img{
+    width: 60px;
+    margin: 0.7rem;
+    margin-bottom: 5px;
+}
+
+.budget-amount{
+    font-size: 2rem;
+}
+
+.display-budget-plan > .budget-display > .green{
+    color: #059669;
+}
+
+.display-budget-plan > .budget-display > .pink{
+    color: #c42f94;
+}
+
+.display-budget-plan > .budget-display > .red{
+    color: #dc2626;
+}
+
+.recent-expenses{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 90%;
+    margin: auto;
+    margin-top: 2.15rem;
+    overflow: hidden;
+}
+
+.expenses-history{
+    border-collapse: collapse;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.expenses-history > thead > tr > th{
+    background-color: #44a0ad;
+    text-align: left;
+    color: #ffffff;
+    font-family: serif;
+}
+
+.expenses-history > thead > tr > th,
+.expenses-history > tbody > tr > td{
+    padding: 11px;
+}
+
+.expenses-history  tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.expenses-history > tbody > tr:last-of-type{
+    border-bottom: 2px solid #44a0ad;
+}
+
+.expenses-history > tbody > tr > td > img{
+    width: 28px;
+}
+
+.expenses-history > tbody > tr > td > img:hover{
+    cursor: pointer;
+}
+
