@@ -1,0 +1,199 @@
+/*Common CSS*/
+@import url('https://fonts.googleapis.com/css2?family=Andika:wght@700&family=Chivo+Mono:wght@700&family=Lora&family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+:root{
+       --font-family:'Poppins', sans-serif;
+       --main-color: #F1F6F9;
+       --body-color:#394867;
+       --text-color:#212A3E;
+       --font-size:1.2rem;
+       --font-weight:900;
+}
+
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    overflow-y: hidden;
+    width: 100vw;
+    height: 10vh;
+  
+   
+    background: white;
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px var(--main-color);
+  }
+.navbar img{
+    width: 10rem;
+    height:10rem ;
+}
+.navbar ul{
+    margin-right: 2rem;
+   
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: visible !important;
+}
+
+.navbar ul>li{
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    list-style:none ;
+    overflow: visible !important;
+}
+.navbar ul a{
+    font-family: var(--font-family);
+    text-decoration: none;
+    color: var(--text-color);
+}
+.navbar ul a:hover{
+    border-bottom: .2rem solid var(--text-color);
+}
+ 
+
+
+
+/*Mid Section*/
+.midSection{
+   
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.midSection>.firstPart{
+   background: rgba(183, 237, 183, 0.5);
+    margin: 0 2rem 0 0;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.midSection>.firstPart>a{
+    color: transparent;
+    text-decoration: none;
+}
+.midSection>.firstPart img{
+    height: 45vh;
+}
+.midSection>.firstPart>.text{
+    margin-right: 5rem;
+}
+.midSection>.firstPart>.text>h2{
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size:2rem;
+    font-weight: var(--font-weight);
+}
+.midSection>.firstPart>.text>p{
+    font-family: var(--font-family);
+    font-size:1rem;
+}
+/*Second Part of mid section*/
+.midSection>.secondPart{
+    
+    margin: 0 2rem 0 0;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.midSection>.secondPart>a{
+    color: transparent;
+    text-decoration: none;
+}
+.midSection>.secondPart img{
+    height: 45vh;
+}
+.midSection>.secondPart>.text2{
+    margin-right: 5rem;
+}
+.midSection>.secondPart>.text2>h2{
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size:2rem;
+    font-weight: var(--font-weight);
+}
+.midSection>.secondPart>.text2>p{
+    font-family: var(--font-family);
+    font-size:1rem;
+}
+.bottomSection{
+    background: rgba(183, 237, 183, 0.5);
+    width: 100vw;
+    height: 45vh;
+    text-align: center;
+}
+.bottomSection>img{
+    height: 5rem;
+}
+.bottomSection>h1{
+    font-size: 3rem;
+    font-family: var(--font-family);
+    color:var(--text-color);
+}
+.bottomSection>p{
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+}
+.bottomSection>a{
+  
+   
+   
+    text-decoration: none;
+
+   
+}
+.bottomSection>a>button{
+   border:.1rem solid var(--text-color);
+   border-radius: 2rem;
+   cursor: pointer;
+   font-family: var(--font-family);
+    background-color: var(--main-color);
+    width: 10%;
+    height: 15%;
+    color: var(--text-color);
+    font-size: var(--font-size);
+}
+
+
+footer{
+    background: var(--text-color);
+    color:var(--main-color);
+    padding: 1.5rem;
+    width: 100vw;
+    height:100vh;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    font-family: var(--font-family);
+}
+footer>div{
+    margin-left: 7rem;
+}
+hr{
+   
+    background: var(--main-color);
+}
+.foot{
+    text-align: center;
+    width: 100vw;
+    height: 8vh;
+    font-family: var(--font-family);
+    color: var(--main-color);
+    background: var(--text-color);
+}
+
+
+
