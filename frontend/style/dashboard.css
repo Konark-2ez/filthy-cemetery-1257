@@ -203,3 +203,8 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+.data-null{
+    text-align: center;
+    font-size: 2rem;
+    column-span: 3;
+}
