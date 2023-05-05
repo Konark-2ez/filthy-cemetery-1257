@@ -17,7 +17,8 @@ app.use(express.json())
 app.use("/users",userRouter)
 
 app.get("/",auth,(req,res)=>{
-    res.send("hello")
+  console.log(req.user)
+    res.sendFile("C:/Users/ABDUL HASEEB T K/OneDrive/Desktop/filthy-cemetery-1257/frontend/index.html")
 })
 
 
@@ -58,9 +59,15 @@ app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/login' ,session:false}),
 function(req, res) {
   // Successful authentication, redirect home.
-    console.log(req.user)
-    res.cookie('token',req.user.token)
-  res.redirect('/');
+    
+  
+    const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h"
+    });
+    console.log(token)
+    res.cookie('token',token)
+  // res.redirect('/');
+  res.sendFile("C:/Users/ABDUL HASEEB T K/OneDrive/Desktop/filthy-cemetery-1257/frontend/index.html")
 });
 
 
