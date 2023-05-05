@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/crypto.css">
     <title>Crypto</title>
-   
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"></script>
+
 </head>
+
 <body>
     <!---------------------------------NavBar------------------------------------------->
- 
+
     <nav class="navbar">
         <a href="index.html"><img src="images/BudgetBud.png" alt="BudgetBuddy"></a>
         <ul>
@@ -21,26 +26,33 @@
 
         </ul>
     </nav>
-   
-        <div id="chart">
-            <div class="bitcoin">
-                <p id="current">BTC: <span id="trend">0</span> </p>
-                <a href="https://www.vecteezy.com/free-png/bitcoin">Bitcoin PNGs by Vecteezy <img src="images/vecteezy_bitcoin-logo-png-bitcoin-icon-transparent-png_19767927_867.png" alt=""></a>
-                <h1>The current Bitcoin Trend in Market</h1>
-            </div>
-            
-            <div>
-                <canvas id="myChart"></canvas>
-            </div>
-          
+
+    <div id="chart">
+        <div class="bitcoin">
+            <p id="current">BTC: <span id="trend">0</span> </p>
+            <a href="https://www.vecteezy.com/free-png/bitcoin">Bitcoin PNGs by Vecteezy <img
+                    src="images/vecteezy_bitcoin-logo-png-bitcoin-icon-transparent-png_19767927_867.png" alt=""></a>
+            <h1>The current Bitcoin Trend in Market</h1>
         </div>
 
-        <div id="chat">
-
+        <div>
+            <canvas id="myChart"></canvas>
         </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
+
+    </div>
+
+    <div id="chat">
+        <br>
+        <h2>Talk other users...</h2>
+        <div class="message-box"></div>
+        <form id="form" action="submit" class="input-box">
+            <input type="text" placeholder="Type your message..." id="message">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 <script src="script/crypto.js"></script>
 </html>
