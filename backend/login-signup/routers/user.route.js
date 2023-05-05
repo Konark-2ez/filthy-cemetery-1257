@@ -1,7 +1,13 @@
 const express = require("express")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const { UserModel } = require("../model/user.model")
+
+
+
+const {UserModel} = require("../model/user.model")
+const { client } = require("../config/redis")
+
+
 const userRouter = express.Router()
 
 
@@ -46,12 +52,16 @@ userRouter.post("/login", async (req, res) => {
         if (password_match) {
             console.log(user._id)
             const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-                expiresIn: "60s"
-            });
 
-            const refreshtoken = jwt.sign({ userId: user._id }, process.env.REFRESH_SECRET, {
-                expiresIn: "120s"
-            });
+        
+
+                expiresIn: "1h"
+              });
+        
+              const refreshtoken = jwt.sign({ userId: user._id }, process.env.REFRESH_SECRET, {
+                expiresIn: "7d"
+              });
+
 
             res.cookie("token", token)
             res.cookie("refreshtoken", refreshtoken)
@@ -65,6 +75,26 @@ userRouter.post("/login", async (req, res) => {
         res.status(401).send({ "msg": error.message });
     }
 
+})
+
+
+// logout
+
+userRouter.get("/logout",async(req,res)=>{
+      
+    try{
+
+        const token = req.cookies.token
+
+        if(!token) return res.status(403);
+
+        await client.set(token,token);
+        res.send("logout successful");
+
+
+    }catch(err) {
+        res.send(err.message)
+    }
 })
 
 
