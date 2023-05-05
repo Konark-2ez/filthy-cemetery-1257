@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#page-container-div {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+/* logo-img */
+
+#logo-img>img {
+    width: 7%;
+    height: 10%;
+    position: absolute;
+    top: 5%;
+    left: 80.5%;
+}
+
+
+/* redirect to home page */
+#direct_to_home {
+    width: 90%;
+    height: 90vh;
+    position: absolute;
+    top: 7%;
+    left: 5%;
+}
+
+#direct_to_home a {
+    padding: 0.5rem 0.7rem;
+    border-radius: 7px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background-color: rgb(4, 198, 111);
+    color: white;
+    text-decoration: none;
+}
+
+#direct_to_home a:hover {
+    background-color: rgb(2, 131, 73);
+}
+
+/* background images */
+#back-img-right {
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+#back-img-right>img,
+#back-img-left>img {
+    width: 100%;
+    height: 100%;
+}
+
+#back-img-left {
+    width: 35%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    left: 65%;
+}
+
+
+/* register form div */
+#register-div {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px 0 0 10px;
+    background-color: #F7F7F7;
+
+}
+
+#register-div h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#register-div form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#register-div form div {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#register-div form div input {
+    width: 48%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#register-div form input {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#register-div form button {
+    width: 50%;
+    margin-top: 10px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #EAD6CD;
+    color: rgb(92, 3, 3);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* loading logo */
+#loading-container {
+    width: 99%;
+    height: 98%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: none;
+}
+
+.loader {
+    border: 7px solid #e3e1e1;
+    border-radius: 50%;
+    border-top: 7px solid #5107b9;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 68%;
+    left: 52%;
+    -webkit-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
+    background: linear-gradient(75% 75% 75% 75% #5107b9, #5107b9 75%);
+    transform: translate(-50%, -50%);
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* login form div */
+main {
+    border: none;
+    width: 45%;
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    display: flex;
+}
+
+#login-register-div {
+    width: 50%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    color: rgb(105, 4, 182);
+}
+
+#login-section {
+    width: 100%;
+    height: 60%;
+    padding: 1rem 1rem 0 1rem;
+    text-align: center;
+    color: rgb(105, 4, 182);
+}
+
+#login-section>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login-section>form>input {
+    border: 1px solid #ccc;
+    outline: none;
+    width: 90%;
+    margin: 1rem 0;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+#login-section>form>button {
+    border: none;
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: #EAD6CD;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(108, 22, 2);
+}
+
+#login-section>form>button:hover {
+    background-color: #edcbbb;
+    cursor: pointer;
+
+}
+
+#register-and-social-media {
+    width: 100%;
+    padding: 0 1rem 1rem 1rem;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+#social-medial-auth {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#social-medial-auth>div {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#social-medial-auth>div>img {
+    width: 32%;
+    cursor: pointer;
+}
+
+
+/* wallet img div that keeps switching on click */
+#picture {
+    width: 50%;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    background-color: #EAD6CD;
+
+}
+
+#picture>img {
+    display: block;
+    width: 100%;
+    margin: auto;
+    border-radius: 0 10px 10px 0;
+    margin-top: 25%;
+}
+
+
+
+
+
+
+@media screen and (max-width : 670px) {
+    body {
+        height: fit-content;
+    }
+
+    #page-container-div {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+    }
+
+    #back-img-right {
+        display: none;
+    }
+
+    #back-img-left {
+        display: none;
+    }
+
+    main {
+        border: none;
+        width: 100%;
+        height: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #F7F7F7;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    #login-register-div {
+        width: 100%;
+        height: 30vh;
+    }
+
+
+
+    #login-section {
+        width: 100%;
+        height: 60%;
+        padding: 1rem 1rem 0 1rem;
+        text-align: center;
+        color: rgb(105, 4, 182);
+    }
+
+    #login-section>form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #login-section>form>input {
+        border: 1px solid gray;
+        outline: none;
+        width: 90%;
+        margin: 1rem 0;
+        border-radius: 5px;
+        padding: 0.5rem;
+    }
+
+    #picture {
+        width: 100%;
+        height: 70vh;
+        border-radius: 0;
+        z-index: 5;
+    }
+
+    #picture>img {
+        border: 1px solid gray;
+        width: 50%;
+    }
+
+    #register-and-social-media {
+        width: 100%;
+        padding: 0 1rem 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+
+    #social-medial-auth {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #register-div {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        z-index: 10;
+    }
+
+    #register-div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px 0 0 10px;
+        background-color: #F7F7F7;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        color: rgb(105, 4, 182);
+    }
+
+}
