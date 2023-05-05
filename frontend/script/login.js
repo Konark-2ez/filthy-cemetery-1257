@@ -96,10 +96,24 @@ const registerlink = () => {
                 required
             /><input
                 type="number"
-                name="mobile"
-                placeholder="Phone Number"
+                name="age"
+                placeholder="age"
                 autocomplete="off"
-                required
+                 required
+            />
+            <input
+                type="string"
+                name="bank"
+                placeholder="bank"
+                autocomplete="off"
+                 required
+            />
+            <input
+                type="string"
+                name="occupation"
+                placeholder="occupation"
+                autocomplete="off"
+                 required
             />
             <input
                 type="password"
@@ -220,7 +234,7 @@ const loginFormSubmit = async (event) => {
     let formData = new FormData(form);
     let data = Object.fromEntries(formData);
     let response = await fetch(
-        "http://localhost:8080/users/register",
+        "http://localhost:8080/users/login",
         {
             method: "POST",
             headers: {
@@ -231,10 +245,10 @@ const loginFormSubmit = async (event) => {
     );
     let result = await response.json();
 
-    if (result.msg === "Login Successfull") {
+    if (result.msg === "login successfully") {
         loading_container.style.display = "none";
         sessionStorage.setItem("token", result.token);
-        sessionStorage.setItem("username", result.user.fname);
+        // sessionStorage.setItem("username", result.user.name);
 
         Swal.fire({
             title: "Logged In successfully!",
@@ -242,7 +256,7 @@ const loginFormSubmit = async (event) => {
             icon: "success",
         })
             .then((res) => {
-                window.location.href = "./Dashboard.html";
+                window.location.assign("/frontend/index.html");
             })
             .catch((err) => {
                 alert("Something Went Wrong");
@@ -253,7 +267,7 @@ const loginFormSubmit = async (event) => {
             title: "Wrong Credentials!",
             text: "Try Again",
             icon: "error",
-        }).then((res) => { });
+        }).then((res) => { console.log(res); });
     }
 };
 
@@ -266,56 +280,77 @@ const registerFormSubmit = async (event) => {
 
     let form = document.getElementById("registerForm");
     let formData = new FormData(form);
+    console.log(formData);
     let data = Object.fromEntries(formData);
+    console.log(data);
 
     if (data.confirm_password == data.password) {
         delete data.confirm_password;
-        let response = await fetch(
+        fetch(
             "http://localhost:8080/users/register",
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    name: data.fname,
+                    age: data.age,
+                    email: data.email,
+                    password: data.password,
+                    occupation: data.occupation,
+                    // confirm_password: data.confirm_password,
+                    bank: data.bank
+                }),
             }
-        );
-        let result = await response.json();
-
-        if (result.msg == "Signup Successfully") {
-            loading_container.style.display = "none";
-            Swal.fire({
-                title: "Registered Successfully!",
-                text: "You are registered successfully.",
-                icon: "success",
-            }).then((res) => {
-                if (res.value) {
-                    window.location.reload();
-                } else {
-                    Swal.fire({
-                        title: "Wrong Credentials!",
-                        text: "Try Again",
-                        icon: "error",
-                    });
-                }
-            });
-        } else {
-            loading_container.style.display = "none";
-            Swal.fire({
-                title: "User Already Registered!",
-                text: "Please Login",
-                icon: "error",
-            });
-        }
-    } else {
-        loading_container.style.display = "none";
-        Swal.fire({
-            title: "Password Mismatched",
-            text: "Please Try Again",
-            icon: "error",
-        }).then();
+        ).then((res) => {
+            return res.json()
+        }).then((data) => {
+            console.log(data);
+            alert("Signup Suess")
+            window.location.reload()
+        }).catch((error) => {
+            console.log(error);
+        })
     }
-};
+    //     let result = await response.json();
+    //     console.log(result.msg);
+    //     if (result.msg == "Signup Successfully") {
+
+    //         loading_container.style.display = "none";
+    //         Swal.fire({
+    //             title: "Registered Successfully!",
+    //             text: "You are registered successfully.",
+    //             icon: "success",
+    //         }).then((res) => {
+    //             if (res.value) {
+    //                 window.location.reload();
+    //             } else {
+    //                 Swal.fire({
+    //                     title: "Wrong Credentials!",
+    //                     text: "Try Again",
+    //                     icon: "error",
+    //                 });
+    //             }
+    //         });
+    //     } else {
+    //         loading_container.style.display = "none";
+    //         Swal.fire({
+    //             title: "User Already Registered!",
+    //             text: "Please Login",
+    //             icon: "error",
+    //         });
+    //     }
+    // } else {
+    //     loading_container.style.display = "none";
+    //     Swal.fire({
+    //         title: "Password Mismatched",
+    //         text: "Please Try Again",
+    //         icon: "error",
+    //     }).then();
+    // }
+
+}
 
 // ---------------------------------------------------------------------------
 
