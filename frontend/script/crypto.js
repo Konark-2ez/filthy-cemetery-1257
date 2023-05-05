@@ -45,30 +45,41 @@ var chart = new Chart(ctx, {
 
 });
 
- 
+ setInterval(() => {
   btc.onmessage = function(event) {
     console.log(event.data)
     var data = JSON.parse(event.data);
     price = parseFloat(data.p).toFixed(6);
     if (price > oldPrice) {
         borderColor = 'green'; // set color to green if rising
+        document.getElementById("trend").style.color = "green"
       } else if (price < oldPrice) {
         borderColor = 'red'; // set color to red if falling
+        document.getElementById("trend").style.color = "red"
       }
       
       chart.data.datasets[0].borderColor = borderColor;
       oldPrice = price;
+      document.getElementById("trend").innerText = price
+    }
+ }, 500);
+
+      
+        setInterval(() => {
+          var time = new Date();
+          var Price = (price / 70).toFixed(5);
+          chart.data.labels.push(time.toLocaleTimeString());
+          chart.data.datasets[0].data.push(Price);
+          chart.update();
+          //
+          if (time.getMinutes() % 30 == 0 && time.getSeconds() == 0) {
+            chart.data.labels = [];
+            chart.data.datasets[0].data = [];
+            chart.update();
+          }
+        }, 1000);
+      
+      
     
-      var time = new Date();
-      var Price = (price / 70).toFixed(5);
-      chart.data.labels.push(time.toLocaleTimeString());
-      chart.data.datasets[0].data.push(Price);
-      chart.update();
-      //
-      if (time.getMinutes() % 30 == 0 && time.getSeconds() == 0) {
-        chart.data.labels = [];
-        chart.data.datasets[0].data = [];
-        chart.update();
-      }
     
-  };
+  
