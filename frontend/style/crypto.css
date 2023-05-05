@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Andika:wght@700&family=Chivo+Mono:wght@700&family=Lora&family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+:root{
+       --font-family:'Poppins', sans-serif;
+       --main-color: #F1F6F9;
+       --body-color:#394867;
+       --text-color:#212A3E;
+       --font-size:1.2rem;
+       --font-weight:900;
+}
+
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    overflow-y: hidden;
+    width: 100vw;
+    height: 10vh;
+  
+   
+    background: white;
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px var(--main-color);
+  }
+.navbar img{
+    width: 10rem;
+    height:10rem ;
+}
+.navbar ul{
+    margin-right: 2rem;
+   
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: visible !important;
+}
+
+.navbar ul>li{
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    list-style:none ;
+    overflow: visible !important;
+}
+.navbar ul a{
+    font-family: var(--font-family);
+    text-decoration: none;
+    color: var(--text-color);
+}
+.navbar ul a:hover{
+    border-bottom: .2rem solid var(--text-color);
+}
+ 
+#chart{
+    background: rgba(183, 237, 183, 0.2);
+    width: 100vw;
+    height:70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#chart>.bitcoin{
+ width: 40%;
+ height: 100%;
+ padding-top: 10rem;
+ text-align: center;
+}
+#chart>.bitcoin>a{
+    text-decoration: none;
+    color: transparent;
+    margin-top: 5%;
+}
+#chart>.bitcoin>a>img{
+    margin-right:20%;
+    width:20%;
+    height:30%;
+}
+
+
+#chart>.bitcoin> h1{
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-weight: var(--font-weight);
+}
+#chart>div {
+    height:100%;
+    width: 60%;
+  
+}
+#chart>div>#myChart{
+    height:100%;
+    width: 100%;
+    margin: auto;
+}
+
+
