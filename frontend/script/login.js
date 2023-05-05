@@ -220,7 +220,7 @@ const loginFormSubmit = async (event) => {
     let formData = new FormData(form);
     let data = Object.fromEntries(formData);
     let response = await fetch(
-        "https://periwinkle-catfish-cuff.cyclic.app/user/login",
+        "http://localhost:8080/users/register",
         {
             method: "POST",
             headers: {
@@ -271,7 +271,7 @@ const registerFormSubmit = async (event) => {
     if (data.confirm_password == data.password) {
         delete data.confirm_password;
         let response = await fetch(
-            "https://periwinkle-catfish-cuff.cyclic.app/user/signup",
+            "http://localhost:8080/users/register",
             {
                 method: "POST",
                 headers: {
@@ -333,3 +333,8 @@ const registerFormSubmit = async (event) => {
 //   }
 // };
 //
+
+let register = document.getElementById("registerForm")
+register.addEventListener('click', () => {
+    console.log("hello");
+})
