@@ -1,0 +1,74 @@
+let selectedCrypto = document.getElementById("select")
+//For webSocket of crypto
+var btc = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+var price = 0;
+var oldPrice = 0;
+var ctx = document.getElementById('myChart').getContext('2d');
+var borderColor = "rgba(255, 99, 132, 1)"
+var chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['time','price'],
+    datasets: [{
+      label: 'Bitcoin',
+      data: [],
+      backgroundColor: 'rgba(255, 99, 132, 1)',
+      borderColor: borderColor,
+      borderWidth: 1
+    }]
+  
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: [{
+        type: 'time',
+        distribution: 'series',
+        ticks: {
+          source: 'data',
+          autoSkip: true
+        }
+        
+      }],
+      yAxes: [{
+        type:'price',
+        ticks: {
+        source:'data',
+          
+          stepSize:100.5050
+        }
+        
+      }]
+    }
+  }
+
+});
+
+ 
+  btc.onmessage = function(event) {
+    console.log(event.data)
+    var data = JSON.parse(event.data);
+    price = parseFloat(data.p).toFixed(6);
+    if (price > oldPrice) {
+        borderColor = 'green'; // set color to green if rising
+      } else if (price < oldPrice) {
+        borderColor = 'red'; // set color to red if falling
+      }
+      
+      chart.data.datasets[0].borderColor = borderColor;
+      oldPrice = price;
+    
+      var time = new Date();
+      var Price = (price / 70).toFixed(5);
+      chart.data.labels.push(time.toLocaleTimeString());
+      chart.data.datasets[0].data.push(Price);
+      chart.update();
+      //
+      if (time.getMinutes() % 30 == 0 && time.getSeconds() == 0) {
+        chart.data.labels = [];
+        chart.data.datasets[0].data = [];
+        chart.update();
+      }
+    
+  };
