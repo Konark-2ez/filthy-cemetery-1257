@@ -8,6 +8,9 @@
     <title>Dashboard</title>
     <link rel="shortcut icon" href="./images/BudgetBud.png" type="image/x-icon">
     <link rel="stylesheet" href="./style/dashboard.css">
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -42,21 +45,21 @@
                     <div class="display-image">
                         <img src="./images/data-report-svgrepo-com.png" alt="" class="budget-img">
                     </div>
-                    <p class="budget-amount green">₹<span id="budget-amount-input">2500</span></p>
+                    <p class="budget-amount green">₹<span id="budget-amount-input">0</span></p>
                 </div>
                 <div class="budget-display">
                     <h2 class="budget-title">EXPENSES</h2>
                     <div class="display-image">
                         <img src="./images/credit-card-svgrepo-com.png" alt="" class="budget-img">
                     </div>
-                    <p class="budget-amount pink">₹<span id="expense-amount-input">2500</span></p>
+                    <p class="budget-amount pink">₹<span id="expense-amount-input">0</span></p>
                 </div>
                 <div class="budget-display">
                     <h2 class="budget-title">BALANCE</h2>
                     <div class="display-image">
                         <img src="./images/wallet-svgrepo-com.png" alt="" class="budget-img">
                     </div>
-                    <p class="budget-amount red">₹<span id="balance-amount-input">2500</span></p>
+                    <p class="budget-amount red">₹<span id="balance-amount-input">0</span></p>
                 </div>
             </div>
             <div class="recent-expenses">
@@ -68,8 +71,14 @@
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="recent-expenses-history">
                         <tr>
+                            <td colspan="3" style="text-align: center; font-size: 2rem;">No Recent Transactions</td>
+                            <!-- <td>-shopping groceries</td>
+                            <td>1000</td>
+                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td> -->
+                        </tr>
+                        <!-- <tr>
                             <td>-shopping groceries</td>
                             <td>1000</td>
                             <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
@@ -88,22 +97,19 @@
                             <td>-shopping groceries</td>
                             <td>1000</td>
                             <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td>-shopping groceries</td>
-                            <td>1000</td>
-                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-        <!-- **************************************** NAV - BAR **************************************** -->
+    <!-- **************************************** NAV - BAR **************************************** -->
 
-        <div class="footer"></div>
+    <div class="footer"></div>
 
 </body>
+
+<script src="./script/dashboard.js"></script>
 
 </html>

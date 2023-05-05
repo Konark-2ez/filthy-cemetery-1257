@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 
-
+const {BudgetModel} = require('../model/budget.model')
 const {UserModel} = require("../model/user.model")
 const { client } = require("../config/redis")
 
@@ -27,6 +27,19 @@ userRouter.post("/register", async (req, res) => {
 
             const user = new UserModel(req.body)
             await user.save()
+
+            // Adding defalut budget {
+          const defaultBudget = {
+            budget:0,
+            expenses:0,
+            balance:0,
+            transactions:[],
+            user:user.email
+          }
+
+          const saveBudget = new BudgetModel(defaultBudget);
+          await saveBudget.save();
+
             res.status(200).send({ "message": 'user successfully registered' })
         }
     }
@@ -51,14 +64,14 @@ userRouter.post("/login", async (req, res) => {
 
         if (password_match) {
             console.log(user._id)
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ userId: user._id, user:user.email }, process.env.JWT_SECRET, {
 
         
 
                 expiresIn: "1h"
               });
         
-              const refreshtoken = jwt.sign({ userId: user._id }, process.env.REFRESH_SECRET, {
+              const refreshtoken = jwt.sign({ userId: user._id, user:user.email }, process.env.REFRESH_SECRET, {
                 expiresIn: "7d"
               });
 
