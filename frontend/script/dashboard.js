@@ -1,10 +1,8 @@
-const baseURL = 'http://localhost:8080';
+const baseURL = 'https://budget-track-qc15.onrender.com';
 
 const token = sessionStorage.getItem("token") || null;
 
-if(!token){
-    alert("Please Login");
-}
+
 
 const socket = io(baseURL, {
     transports: ['websocket'],
@@ -35,10 +33,22 @@ const displayBudget = document.getElementById('budget-amount-input');
 const displayExpense = document.getElementById('expense-amount-input');
 const displayBalance = document.getElementById('balance-amount-input');
 const historyContainer = document.getElementById('recent-expenses-history');
+let dashLoader = document.getElementById('dash-loading-container');
+let dashOverlay = document.getElementById('over-lay-dash');
 
+
+if(!token){
+    alert("Please Login");
+}
+else{
+    dashOverlay.style.display = "block";
+    dashLoader.style.display = "block";
+}
 
 // Default Budget
 socket.on("defaultBudget", (data) => {
+    dashOverlay.style.display = "none";
+    dashLoader.style.display = "none";
     if (data) {
         data = JSON.parse(data);
 
@@ -66,7 +76,10 @@ budgetBtn.addEventListener('click', () => {
 
     let budgetamt = +(budgetInput.value)
     console.log(budgetamt)
-    if (!budgetamt) return alert("Please Provide Budget")
+    if (!budgetamt) return alert("Please Provide Budget");
+
+    dashOverlay.style.display = "block";
+    dashLoader.style.display = "block";
     socket.emit("budgetAmt", budgetamt);
     budgetInput.value = null
 })
@@ -74,6 +87,8 @@ budgetBtn.addEventListener('click', () => {
 
 // getting the updated data
 socket.on('updatedBudget', (data) => {
+    dashOverlay.style.display = "none";
+    dashLoader.style.display = "none";
     const updatedBudget = JSON.parse(data);
     console.log(updatedBudget)
 
@@ -105,6 +120,8 @@ expenseBtn.addEventListener('click', () => {
     }
 
     console.log(expenses)
+    dashOverlay.style.display = "block";
+    dashLoader.style.display = "block";
     socket.emit("expenses", JSON.stringify(expenses));
     expenseName.value = null;
     expenseAmt.value = null;
@@ -113,6 +130,8 @@ expenseBtn.addEventListener('click', () => {
 
 // Getting the Updated Expenses
 socket.on('expenseDeduct', (data) => {
+    dashOverlay.style.display = "none";
+    dashLoader.style.display = "none";
     const updatedExpense = JSON.parse(data);
 
     // Displaying the Stats
@@ -136,6 +155,8 @@ socket.on('expenseDeduct', (data) => {
 
 // Getting the Updated expenses history
 socket.on('updatedExpenses', (data)=>{
+    dashOverlay.style.display = "none";
+    dashLoader.style.display = "none";
     const updatedHistory = JSON.parse(data);
 
     console.log(updatedHistory);
@@ -194,6 +215,8 @@ function showRecentHistory(data) {
             });
 
             // console.log(ele.amount)
+            dashOverlay.style.display = "block";
+             dashLoader.style.display = "block";
 
             // Sending Updated transactions
             socket.emit("removeExpenses",JSON.stringify({filtered, amt:ele.amount}));
