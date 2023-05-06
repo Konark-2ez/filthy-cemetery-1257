@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    overflow-x: hidden;
 }
 :root{
        --font-family:'Poppins', sans-serif;
@@ -59,7 +59,9 @@
 .navbar ul a:hover{
     border-bottom: .2rem solid var(--text-color);
 }
- 
+ #dash-id{
+    cursor: pointer;
+ }
 
 
 
@@ -185,12 +187,7 @@
     font-size: var(--font-size);
 }
 .bottomSection>a{
-  
-   
-   
     text-decoration: none;
-
-   
 }
 .bottomSection>a>button{
    border:.1rem solid var(--text-color);

@@ -35,6 +35,7 @@ app.get("/",auth,(req,res)=>{
 io.use(socketAuth);
 
 io.on('connection',async(socket)=>{
+  
   console.log("Client Connected");
 
   // getting the default data of the user

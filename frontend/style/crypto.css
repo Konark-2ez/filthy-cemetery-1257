@@ -58,6 +58,9 @@
 .navbar ul a:hover{
     border-bottom: .2rem solid var(--text-color);
 }
+#dash-id{
+  cursor: pointer;
+}
  
 #chart{
     background: rgba(183, 237, 183, 0.2);
