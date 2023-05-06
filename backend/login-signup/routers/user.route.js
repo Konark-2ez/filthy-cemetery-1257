@@ -3,8 +3,8 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 
-const {BudgetModel} = require('../model/budget.model')
-const {UserModel} = require("../model/user.model")
+const { BudgetModel } = require('../model/budget.model')
+const { UserModel } = require("../model/user.model")
 const { client } = require("../config/redis")
 
 
@@ -29,16 +29,16 @@ userRouter.post("/register", async (req, res) => {
             await user.save()
 
             // Adding defalut budget {
-          const defaultBudget = {
-            budget:0,
-            expenses:0,
-            balance:0,
-            transactions:[],
-            user:user.email
-          }
+            const defaultBudget = {
+                budget: 0,
+                expenses: 0,
+                balance: 0,
+                transactions: [],
+                user: user.email
+            }
 
-          const saveBudget = new BudgetModel(defaultBudget);
-          await saveBudget.save();
+            const saveBudget = new BudgetModel(defaultBudget);
+            await saveBudget.save();
 
             res.status(200).send({ "message": 'user successfully registered' })
         }
@@ -64,22 +64,22 @@ userRouter.post("/login", async (req, res) => {
 
         if (password_match) {
             console.log(user._id)
-            const token = jwt.sign({ userId: user._id, user:user.email }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ userId: user._id, user: user.email }, process.env.JWT_SECRET, {
 
-        
+
 
                 expiresIn: "1h"
-              });
-        
-              const refreshtoken = jwt.sign({ userId: user._id, user:user.email }, process.env.REFRESH_SECRET, {
-                expiresIn: "7d"
-              });
+            });
 
+            const refreshtoken = jwt.sign({ userId: user._id, user: user.email }, process.env.REFRESH_SECRET, {
+                expiresIn: "7d"
+            });
+            let name = user.name
 
             res.cookie("token", token)
             res.cookie("refreshtoken", refreshtoken)
 
-            res.send({ "msg": "login successfully", "token": token, "refreshtoken": refreshtoken })
+            res.send({ "msg": "login successfully", "token": token, "refreshtoken": refreshtoken, "name": name })
         } else {
             res.status(401).send({ "message": 'Invalid  password' });
         }
@@ -93,19 +93,19 @@ userRouter.post("/login", async (req, res) => {
 
 // logout
 
-userRouter.get("/logout",async(req,res)=>{
-      
-    try{
+userRouter.get("/logout", async (req, res) => {
+
+    try {
 
         const token = req.cookies.token
 
-        if(!token) return res.status(403);
+        if (!token) return res.status(403);
 
-        await client.set(token,token);
+        await client.set(token, token);
         res.send("logout successful");
 
 
-    }catch(err) {
+    } catch (err) {
         res.send(err.message)
     }
 })

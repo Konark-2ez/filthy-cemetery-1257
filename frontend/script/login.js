@@ -1,3 +1,4 @@
+// const { json } = require("body-parser");
 
 let loading_container = document.getElementById("loading-container");
 
@@ -249,6 +250,7 @@ const loginFormSubmit = async (event) => {
         loading_container.style.display = "none";
         sessionStorage.setItem("token", result.token);
         // sessionStorage.setItem("username", result.user.name);
+        localStorage.setItem("user", JSON.stringify(result.name))
 
         Swal.fire({
             title: "Logged In successfully!",
@@ -369,7 +371,7 @@ const registerFormSubmit = async (event) => {
 // };
 //
 
-let register = document.getElementById("registerForm")
-register.addEventListener('click', () => {
-    console.log("hello");
-})
+// let register = document.getElementById("registerForm")
+// register.addEventListener('click', () => {
+//     console.log("hello");
+// })
