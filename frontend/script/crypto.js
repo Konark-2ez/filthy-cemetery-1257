@@ -79,7 +79,7 @@ var chart = new Chart(ctx, {
           }
         }, 1000);
 // for socket .io
-const socket = io("http://localhost:8000/", { transports: ["websocket"] });
+const socket = io("https://chat-application-mpcf.onrender.com", { transports: ["websocket"] });
      document.querySelector("#form").addEventListener("submit",(e)=>{
         e.preventDefault();
         let name=localStorage.getItem("user");
