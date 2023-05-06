@@ -13,3 +13,5 @@ io.on("connection",(socket)=>{
 server.listen(8000,()=>{
     console.log("Connectet to 8000")
 })
+
+//currrently using deplyed link for socket.io
