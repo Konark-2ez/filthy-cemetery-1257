@@ -23,6 +23,7 @@ app.use(express.json())
 
 app.use("/users",userRouter)
 
+
 app.get("/",auth,(req,res)=>{
   console.log(req.user)
     res.sendFile("C:/Users/ABDUL HASEEB T K/OneDrive/Desktop/filthy-cemetery-1257/frontend/index.html")

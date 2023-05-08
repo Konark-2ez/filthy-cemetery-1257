@@ -11,7 +11,7 @@ const auth = async (req, res, next) => {
 
 
 
-    const token = req.cookies.token
+    const token = req.body.token;
 
 
     try {
@@ -42,11 +42,22 @@ const auth = async (req, res, next) => {
     }
 }
 
-const socketAuth = (socket, next) => {
+const socketAuth = async(socket, next) => {
 
     const token = socket.handshake.query.token;
 
     try {
+
+        // if(token)
+        // {
+        //     const isTokenBlacklist = await client.get(token);
+        //     console.log(isTokenBlacklist)
+        //     if(isTokenBlacklist)
+        //     {
+        //         const logout = new Error("Please Login");
+        //         return next(logout);
+        //     }
+        // }
 
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
 
