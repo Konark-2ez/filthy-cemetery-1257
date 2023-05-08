@@ -3,7 +3,8 @@ const baseURL = 'http://localhost:8080';
 
 const token = sessionStorage.getItem("token") || null;
 
-// const budgetBtn = document.getElementById('add-budget');
+
+
 const budgetInput = document.getElementById('d-budget');
 const expenseName = document.getElementById('expense-title');
 const expenseAmt = document.getElementById('expense-amout');

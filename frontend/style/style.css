@@ -62,6 +62,46 @@
  #dash-id{
     cursor: pointer;
  }
+ #modal {
+    background-color: var(--main-color);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: fixed;
+    z-index: 9999;
+    top: 10%;
+    left: 70%;
+    width: 25vw;
+    height: 10vh;
+    display: none;
+    text-align: center;
+}
+#logout{
+    margin-top: 3%;
+    background-color: red;
+    border-color: transparent;
+    width: 150px;
+    height: 50%;
+    border:transparent;
+    border-radius: 2rem;
+    color: var(--main-color);
+    font-family: var(--font-family);
+}
+
+.hamburger{
+    margin-right: 5%;
+    display: none;
+    cursor: pointer;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    margin-right: 20%;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3 s ease-in-out;
+    background-color: var(--text-color);
+}
+
 
 
 
@@ -209,7 +249,7 @@ footer{
     width: 100vw;
     height:50vh;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
     font-family: var(--font-family);
 }
 footer>div{
@@ -228,6 +268,164 @@ hr{
     color: var(--main-color);
     background: var(--text-color);
 }
+
+@media(max-width:768px){
+    .hamburger{
+        display: block;
+    }
+   
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(2px) rotate(45deg);
+       
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(2px) rotate(-45deg);
+       
+    }
+    .nav-menu{
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--main-color);
+        width: 300px;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu.active{
+        right: 0;
+    }
+    .midSection>.firstPart img{
+        height: 20vh;
+    }
+    .midSection>.secondPart img{
+        height: 20vh;
+    }
+    .midSection>.thirdPart img{
+        height: 20vh;
+    }
+    .bottomSection>a>button{
+        width: 30%;
+    }
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        height: 120vh;
+        text-align: center;
+    }
+    #modal {
+        background-color: var(--main-color);
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        position: fixed;
+       
+        z-index: 9999;
+        top: 35%;
+        left: 70%;
+        width: 25vw;
+        height: 10vh;
+        display: none;
+        text-align: center;
+    }
+    
+}
+@media(max-width:600px){
+    .hamburger{
+        display: block;
+    }
+   
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(2px) rotate(45deg);
+       
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(2px) rotate(-45deg);
+       
+    }
+    .nav-menu{
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--main-color);
+        width: 100vw;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu.active{
+        right: 0;
+    }
+    .midSection>.firstPart{
+        flex-direction: column;
+        text-align: center;
+    }
+    .midSection>.secondPart{
+        flex-direction: column;
+        text-align: center;
+    }
+    .midSection>.thirdPart{
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .midSection>.firstPart img{
+        height: 20vh;
+        margin-right: 25%;
+    }
+    .midSection>.secondPart img{
+        height:20vh;
+        margin-right: 25%;
+    }
+    .midSection>.thirdPart img{
+        height: 20vh;
+        margin-right: 25%;
+    }
+    .bottomSection>a>button{
+        width: 30%;
+    }
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        height: 120vh;
+        text-align: center;
+    }
+    #logout{
+        margin-top: 3%;
+        background-color: red;
+        border-color: transparent;
+        width:80px;
+        height: 50%;
+    }
+    #modal {
+        background-color: var(--main-color);
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        position: fixed;
+       
+        z-index: 9999;
+        top: 35%;
+        left: 70%;
+        width: 25vw;
+        height: 10vh;
+        display: none;
+        text-align: center;
+    }
+    
+    
+}
+
 
 
 

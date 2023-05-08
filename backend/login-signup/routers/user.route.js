@@ -89,16 +89,15 @@ userRouter.post("/login", async (req, res) => {
 
 // logout
 
-userRouter.get("/logout", async (req, res) => {
+userRouter.post("/logout", async (req, res) => {
 
     try {
 
-        const token = req.cookies.token
-
+        const token = req.body.token;
         if (!token) return res.status(403);
 
         await client.set(token, token);
-        res.send("logout successful");
+        res.send({"status":"logout successful"});
 
 
     } catch (err) {
