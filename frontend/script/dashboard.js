@@ -14,9 +14,10 @@ const socket = io(baseURL, {
 
 // handling the errors
 socket.on('connect_error', (error) => {
-    if (error.message === 'invalid token' || error.message === 'jwt expired') {
+    console.log(error)
+    if (error.message) {
         console.log(error.message);
-        alert(`Please Login`)
+        window.location.href= "./login.html";
     }
     else {
         console.log(error);
