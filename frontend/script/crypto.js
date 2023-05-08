@@ -78,7 +78,7 @@ var chart = new Chart(ctx, {
             chart.update();
           }
         }, 1000);
-// for socket .io
+// for socket .io part this is the code
 const socket = io("https://chat-application-mpcf.onrender.com", { transports: ["websocket"] });
      document.querySelector("#form").addEventListener("submit",(e)=>{
         e.preventDefault();
