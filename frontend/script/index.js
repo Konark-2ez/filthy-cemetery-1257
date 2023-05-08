@@ -4,16 +4,38 @@ const baseURL = 'https://budget-track-qc15.onrender.com';
 let datas =JSON.parse(localStorage.getItem("user"))
 const token = sessionStorage.getItem("token") || null;
 
+const loginBtn = document.getElementById("log");
+
+if(token)
+{
+    loginBtn.innerText = "Logout"
+    loginBtn.classList.add("logOut");
+    loginBtn.setAttribute("href", "./index.html");
+    let logOut = document.getElementsByClassName("logOut")[0];
+    logOut.addEventListener("click",()=>{
+        sessionStorage.removeItem("token");
+        loginBtn.innerText = "Login";
+        loginBtn.classList.remove("logOut");
+        window.location.href = "./index.html"
+    })
+}
+else{
+    loginBtn.setAttribute("href", "./login.html");
+    loginBtn.innerText = "Login"
+}
+
+
     function checkValidation()
     {
         if(!token)
         {
             alert('Please Login to Continue');
         }else{
-            location.reload();
             window.location.href = 'dashboard.html';
         }
     }
+
+
     
 
     //logout
@@ -70,3 +92,4 @@ const token = sessionStorage.getItem("token") || null;
 
    }))
    
+
