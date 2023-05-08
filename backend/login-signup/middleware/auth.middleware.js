@@ -6,13 +6,7 @@ const { client } = require("../config/redis")
 
 const auth = async (req, res, next) => {
 
-
-
-
-
-
     const token = req.cookies.token
-
 
     try {
         if (token) {
@@ -42,16 +36,20 @@ const auth = async (req, res, next) => {
     }
 }
 
+
+
 const socketAuth = (socket, next) => {
 
     const token = socket.handshake.query.token;
+
+    if(!token) return next(new Error("Please Provide Token"));
 
     try {
 
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
 
             if (err) {
-                next(err);
+                return next(err);
             }
 
             if (decoded.user) {

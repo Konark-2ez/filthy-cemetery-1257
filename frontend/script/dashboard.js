@@ -1,30 +1,9 @@
-const baseURL = 'https://budget-track-qc15.onrender.com';
+// const baseURL = 'https://budget-track-qc15.onrender.com';
+const baseURL = 'http://localhost:8080';
 
 const token = sessionStorage.getItem("token") || null;
 
-
-
-const socket = io(baseURL, {
-    transports: ['websocket'],
-    query: {
-        token: token,
-        oauthEmail: "fromLocalStorage"
-    }
-});
-
-// handling the errors
-socket.on('connect_error', (error) => {
-    if (error.message === 'invalid token' || error.message === 'jwt expired') {
-        console.log(error.message);
-        alert(`Please Login`)
-    }
-    else {
-        console.log(error);
-        alert(`Something went wrong`);
-    }
-});
-
-const budgetBtn = document.getElementById('add-budget');
+// const budgetBtn = document.getElementById('add-budget');
 const budgetInput = document.getElementById('d-budget');
 const expenseName = document.getElementById('expense-title');
 const expenseAmt = document.getElementById('expense-amout');
@@ -35,15 +14,46 @@ const displayBalance = document.getElementById('balance-amount-input');
 const historyContainer = document.getElementById('recent-expenses-history');
 let dashLoader = document.getElementById('dash-loading-container');
 let dashOverlay = document.getElementById('over-lay-dash');
+let socket;
 
+dashOverlay.style.display = "block";
+dashLoader.style.display = "block";
 
 if(!token){
-    alert("Please Login");
+    alert("Please Login to Continue")
+    window.location.href = "./index.html"
 }
 else{
-    dashOverlay.style.display = "block";
-    dashLoader.style.display = "block";
+
+     socket = io(baseURL, {
+        transports: ['websocket'],
+        query: {
+            token: token,
+            oAuthEmail: "fromLocalStorage"
+        }
+    });
+
 }
+
+
+
+// handling the errors
+socket.on('connect_error', (error) => {
+    console.log(error)
+    if (error.message) {
+        console.log(error.message);
+        alert(`Please Login`)
+        window.location.href = "./login.html"
+    }
+    else {
+        console.log(error);
+        alert(`Something went wrong`);
+    }
+});
+
+
+
+
 
 // Default Budget
 socket.on("defaultBudget", (data) => {
@@ -70,8 +80,8 @@ socket.on("defaultBudget", (data) => {
 
 
 // Sending budget amount
-budgetBtn.addEventListener('click', () => {
-
+// budgetBtn.addEventListener('click', () => {
+function budgetBtn(){
     if(!token) return alert("Please Login")
 
     let budgetamt = +(budgetInput.value)
@@ -82,7 +92,8 @@ budgetBtn.addEventListener('click', () => {
     dashLoader.style.display = "block";
     socket.emit("budgetAmt", budgetamt);
     budgetInput.value = null
-})
+// })
+}
 
 
 // getting the updated data

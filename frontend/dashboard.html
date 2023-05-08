@@ -22,11 +22,13 @@
         <a href="index.html"><img src="images/BudgetBud.png" alt="BudgetBuddy"></a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a onclick="checkValidation()" id="dash-id">DashBoard</a></li>
+            <li><a  onclick="checkValidation()" id="dash-id">DashBoard</a></li>
             <li><a href="crypto.html">Crypto</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="login.html" id="log">Login</a></li>
         </ul>
     </nav>
+
+    <hr>
 
     <!-- **************************************** BODY **************************************** -->
 
@@ -35,14 +37,14 @@
     <div class="dash-container">
         <div class="left-cont">
             <div class="budget-input budget-box">
-                <label for="d-budget">Please Enter Your Budget</label>
+                <label for="d-budget">Set Budget</label>
                 <div><input type="number" id="d-budget" placeholder="0.00" class="budget-input-box"></div>
-                <button id="add-budget" class="add-budget-button">Add Budget</button>
+                <button id="add-budget" onclick="budgetBtn()" class="add-budget-button">Add Budget</button>
             </div>
             <div class="expense-input budget-box">
-                <label for="expense-title">Please Enter Your Expense</label><input type="text" id="expense-title"
+                <label for="expense-title">Add Expenses</label><input type="text" id="expense-title"
                     class="budget-input-box" placeholder="Expenses">
-                <label for="expense-amout">Amount</label><input type="text" id="expense-amout" placeholder="0.00"
+                <label for="expense-amout">Amount</label><input type="number" id="expense-amout" placeholder="0.00"
                     class="budget-input-box">
                 <button id="add-expense" class="add-budget-button">Add Expense</button>
             </div>
@@ -87,31 +89,12 @@
                             <td>1000</td>
                             <td><img src="./images/delete-svgrepo-com.png" alt=""></td> -->
                         </tr>
-                        <!-- <tr>
-                            <td>-shopping groceries</td>
-                            <td>1000</td>
-                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td>-shopping groceries</td>
-                            <td>1000</td>
-                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td>-shopping groceries</td>
-                            <td>1000</td>
-                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td>-shopping groceries</td>
-                            <td>1000</td>
-                            <td><img src="./images/delete-svgrepo-com.png" alt=""></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 
     <!-- **************************************** NAV - BAR **************************************** -->
 
