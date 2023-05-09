@@ -235,7 +235,7 @@ const loginFormSubmit = async (event) => {
     let formData = new FormData(form);
     let data = Object.fromEntries(formData);
     let response = await fetch(
-        "http://localhost:8080/users/login",
+        "https://budget-track-qc15.onrender.com/users/login",
         {
             method: "POST",
             headers: {
@@ -289,7 +289,7 @@ const registerFormSubmit = async (event) => {
     if (data.confirm_password == data.password) {
         delete data.confirm_password;
         fetch(
-            "http://localhost:8080/users/register",
+            "https://budget-track-qc15.onrender.com/users/register",
             {
                 method: "POST",
                 headers: {
