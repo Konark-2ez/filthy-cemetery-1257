@@ -83,6 +83,9 @@ const socket = io("https://chat-application-mpcf.onrender.com", { transports: ["
      document.querySelector("#form").addEventListener("submit",(e)=>{
         e.preventDefault();
         let name=localStorage.getItem("user");
+        if(name==null){
+          name="Anonnymous"
+        }
         let msg = document.querySelector("#message").value;
         sent_msg(name,msg)
         document.querySelector("#message").value = '';
