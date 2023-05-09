@@ -61,6 +61,49 @@
 #dash-id{
   cursor: pointer;
 }
+#modal {
+    background-color: var(--main-color);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: fixed;
+    z-index: 9999;
+    top: 10%;
+    left: 70%;
+    width: 25vw;
+    height: 10vh;
+    display: none;
+    text-align: center;
+}
+#logout{
+    margin-top: 3%;
+    background-color: red;
+    border-color: transparent;
+    width: 150px;
+    height: 50%;
+    border:transparent;
+    border-radius: 2rem;
+    color: var(--main-color);
+    font-family: var(--font-family);
+}
+
+.hamburger{
+    margin-right: 5%;
+    display: none;
+    cursor: pointer;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    margin-right: 20%;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3 s ease-in-out;
+    background-color: var(--text-color);
+}
+
+
+
+
  
 #chart{
     background: rgba(183, 237, 183, 0.2);
@@ -103,7 +146,15 @@
     width: 100%;
     margin: auto;
 }
-
+#current{
+  font-size: var(--font-size);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+#current>span{
+  
+  font-family: var(--font-family);
+}
 /* code for chat box */
 .chat-box {
     display: flex;
@@ -176,3 +227,126 @@
   }
   
 
+  @media(max-width:768px){
+    .hamburger{
+        display: block;
+    }
+   
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(2px) rotate(45deg);
+       
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(2px) rotate(-45deg);
+       
+    }
+    .nav-menu{
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--main-color);
+        width: 300px;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu.active{
+        right: 0;
+    }
+
+   #chart{
+    flex-direction: column;
+    height: 100vh;
+   }
+   #chart>.bitcoin>a>img{
+    width: 50%;
+    height: 40%;
+   }
+    #modal {
+        background-color: var(--main-color);
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        position: fixed;
+       
+        z-index: 9999;
+        top: 35%;
+        left: 70%;
+        width: 25vw;
+        height: 10vh;
+        display: none;
+        text-align: center;
+    }
+    
+}
+@media(max-width:600px){
+    .hamburger{
+        display: block;
+    }
+   
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(2px) rotate(45deg);
+       
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(2px) rotate(-45deg);
+       
+    }
+    #chart{
+      flex-direction: column;
+      height: 120vh;
+     }
+     #chart>.bitcoin>a>img{
+      margin-left: 10px;
+      width: 80px;
+      height: 80px;
+     }
+    .nav-menu{
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--main-color);
+        width: 100vw;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu.active{
+        right: 0;
+    }
+    
+    #logout{
+        margin-top: 3%;
+        background-color: red;
+        border-color: transparent;
+        width:80px;
+        height: 50%;
+    }
+    #modal {
+        background-color: var(--main-color);
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        position: fixed;
+       
+        z-index: 9999;
+        top: 35%;
+        left: 70%;
+        width: 25vw;
+        height: 10vh;
+        display: none;
+        text-align: center;
+    }
+    
+    
+}
