@@ -1,95 +1,72 @@
 
-const baseURL = 'https://budget-track-qc15.onrender.com';
+// const baseURL = 'https://budget-track-qc15.onrender.com';
+
 // Allowing the user only if logged In
-let datas =JSON.parse(localStorage.getItem("user"))
+let datas = JSON.parse(localStorage.getItem("user")) || null
 const token = sessionStorage.getItem("token") || null;
 
-const loginBtn = document.getElementById("log");
-
-if(token)
-{
-    loginBtn.innerText = "Logout"
-    loginBtn.classList.add("logOut");
-    loginBtn.setAttribute("href", "./index.html");
-    let logOut = document.getElementsByClassName("logOut")[0];
-    logOut.addEventListener("click",()=>{
-        sessionStorage.removeItem("token");
-        loginBtn.innerText = "Login";
-        loginBtn.classList.remove("logOut");
-        window.location.href = "./index.html"
-    })
-}
-else{
-    loginBtn.setAttribute("href", "./login.html");
-    loginBtn.innerText = "Login"
+function checkValidation() {
+    if (!token) {
+        alert('Please Login to Continue');
+    } else {
+        window.location.href = 'dashboard.html';
+    }
 }
 
 
-    function checkValidation()
-    {
-        if(!token)
-        {
-            alert('Please Login to Continue');
-        }else{
-            window.location.href = 'dashboard.html';
-        }
+//logout
+const modal = document.getElementById("modal")
+const logout = document.getElementById("logout")
+const logoutOverlay = document.getElementsByClassName("logout-overlay")[0];
+
+function toggleModal() {
+    if (token) {
+        document.getElementById("log").setAttribute("href", "#")
+        modal.style.display = "flex"
+        logoutOverlay.classList.add("visible-logout-overlay");
     }
-
-
-    
-
-    //logout
-    const modal = document.getElementById("modal")
-    const logout = document.getElementById("logout")
-    function toggleModal(){if(token){
-        modal.style.display = "block"
-        document.getElementById("log").setAttribute("href","#")
-    }
-    else{
+    else {
         modal.style.display = "none"
-    }}
-    logout.addEventListener("click",()=>{
-        console.log("clicked")
-        fetch(`http://localhost:8080/users/logout`,{
-            method:"POST",
-           
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({token:token})
-            
-                
-            
-        })
-        .then((res)=>{return res.json()})
-        .then((data)=>{
-            console.log(data)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-    })
+        logoutOverlay.classList.remove("visible-logout-overlay");
+    }
+}
 
-   if(token){
-       document.getElementById("log").innerText = datas
-   }
-   else{
+
+function removeOverlayLg() {
+    logoutOverlay.classList.remove("visible-logout-overlay");
+    modal.style.display = "none"
+}
+
+
+logout.addEventListener("click", () => {
+    sessionStorage.removeItem("token");
+    localStorage.removeItem("user");
+    document.getElementById("log").innerText = "Login";
+    window.location.href = "./index.html"
+})
+
+
+if (token) {
+    document.getElementById("log").innerText = datas
+}
+else {
     document.getElementById("log").innerText = "Login"
-   }
+}
 
-   const hamburger = document.querySelector(".hamburger")
-   const navMenu = document.querySelector(".nav-menu")
 
-   hamburger.addEventListener("click",()=>{
+const hamburger = document.querySelector(".hamburger")
+const navMenu = document.querySelector(".nav-menu")
+
+hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active")
     navMenu.classList.toggle("active")
 
-    
-   })
-   document.querySelectorAll(".nav-link").forEach(n=>n.addEventListener("click",()=>{
+
+})
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active")
 
-   }))
-   
+}))
+
 
