@@ -245,7 +245,7 @@ const loginFormSubmit = async (event) => {
         }
     );
     let result = await response.json();
-
+        console.log(result)
     if (result.msg === "login successfully") {
         loading_container.style.display = "none";
         sessionStorage.setItem("token", result.token);
