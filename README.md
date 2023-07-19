@@ -5,33 +5,7 @@ This is a real-time budget application that allows users to track their expenses
 ---
 
 
-## ✨Collaboraters Names Are :-
-
-1. Konark Chandra Kumar(Team Lead)
-   >    - e-Mail: konarkkumar456@gmail.com
-   >    - GitHub: https://github.com/Konark-2ez
-
-
-2. Manideep Peddaboini
-   >    - e-Mail: peddaboinimanideep03@gmail.com
-   >    - GitHub: https://github.com/Manideep-0164 
-
-
-3. Sumit Kumar Yadav
-   >    - e-Mail: sy7985494155@gmail.com
-   >    - GitHub: https://github.com/sumit9235
-
-
-4. Shashwat Mahendra
-   >    - e-Mail: shashwatmahender2104@gmail.com
-   >    - GitHub: https://github.com/Shashwat2104 
-
-
-5. Abdul Haseeb T K
-   >    - e-Mail:  haseebshs@gmail.com
-   >    - GitHub: https://github.com/haseeb1233 
-
-
+⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
 
 
 ---
@@ -125,7 +99,32 @@ This is a real-time budget application that allows users to track their expenses
 ---
 
 ---
-⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
+
+## ✨Collaboraters Names Are :-
+
+1. Konark Chandra Kumar(Team Lead)
+   >    - e-Mail: konarkkumar456@gmail.com
+   >    - GitHub: https://github.com/Konark-2ez
+
+
+2. Manideep Peddaboini
+   >    - e-Mail: peddaboinimanideep03@gmail.com
+   >    - GitHub: https://github.com/Manideep-0164 
+
+
+3. Sumit Kumar Yadav
+   >    - e-Mail: sy7985494155@gmail.com
+   >    - GitHub: https://github.com/sumit9235
+
+
+4. Shashwat Mahendra
+   >    - e-Mail: shashwatmahender2104@gmail.com
+   >    - GitHub: https://github.com/Shashwat2104 
+
+
+5. Abdul Haseeb T K
+   >    - e-Mail:  haseebshs@gmail.com
+   >    - GitHub: https://github.com/haseeb1233
 
 
 ----
