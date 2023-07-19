@@ -5,7 +5,7 @@ let loading_container = document.getElementById("loading-container");
 // ---------------------------------------------------------------------------
 // login switch
 const loginlink = () => {
-    const loginLayout = ` 
+  const loginLayout = ` 
     <section id="login-section">
     <h2>Login</h2>
     <form action="" id="loginForm" onsubmit="loginFormSubmit(event)">
@@ -33,50 +33,50 @@ const loginlink = () => {
     </div>
     <div id="social-medial-auth">
     <div>
-        <img src="../images/search.png" alt="" onclick="googleLogin()"/>
+        <img src="./images/search.png" alt="" onclick="googleLogin()"/>
     </div>
     <div>
-        <img src="../images/github.png" alt="" />
+        <img src="./images/github.png" alt="" />
     </div>
     <div>
-        <img src="../images/facebook.png" alt="" />
+        <img src="./images/facebook.png" alt="" />
     </div>
     </div>
     </section>
 
 `;
-    let right = document.getElementById("picture");
-    let left = document.getElementById("login-register-div");
+  let right = document.getElementById("picture");
+  let left = document.getElementById("login-register-div");
 
-    right.innerHTML = null;
-    left.innerHTML = null;
+  right.innerHTML = null;
+  left.innerHTML = null;
 
-    let img = document.createElement("img");
-    img.style.display = "block";
-    img.style.width = "100%";
-    img.style.margin = "auto";
-    img.style.marginTop = "25%";
-    img.src = "https://i.ibb.co/dfJrgS9/picure.png";
+  let img = document.createElement("img");
+  img.style.display = "block";
+  img.style.width = "100%";
+  img.style.margin = "auto";
+  img.style.marginTop = "25%";
+  img.src = "https://i.ibb.co/dfJrgS9/picure.png";
 
-    left.style.backgroundColor = "#EAD6CD";
-    right.style.backgroundColor = "#F7F7F7";
+  left.style.backgroundColor = "#EAD6CD";
+  right.style.backgroundColor = "#F7F7F7";
 
-    left.append(img);
-    right.innerHTML = loginLayout;
+  left.append(img);
+  right.innerHTML = loginLayout;
 };
 
 // ---------------------------------------------------------------------------
 
 // register switch
 const registerlink = () => {
-    const registerLayout = `
+  const registerLayout = `
             <div id="register-div">
             <h2>Register</h2>
             <form action="" id="registerForm" onsubmit="registerFormSubmit(event)">
             <div>
                 <input
                 type="text"
-                name="fname"
+                name="name"
                 placeholder="First Name"
                 autocomplete="off"
                 required
@@ -136,31 +136,31 @@ const registerlink = () => {
             </div>
     `;
 
-    let right = document.getElementById("picture");
-    let left = document.getElementById("login-register-div");
-    right.innerHTML = null;
-    left.innerHTML = null;
+  let right = document.getElementById("picture");
+  let left = document.getElementById("login-register-div");
+  right.innerHTML = null;
+  left.innerHTML = null;
 
-    left.innerHTML = registerLayout;
+  left.innerHTML = registerLayout;
 
-    let img = document.createElement("img");
-    img.style.display = "block";
-    img.style.width = "100%";
-    img.style.margin = "auto";
-    img.style.marginTop = "25%";
-    img.src = "https://i.ibb.co/dfJrgS9/picure.png";
+  let img = document.createElement("img");
+  img.style.display = "block";
+  img.style.width = "100%";
+  img.style.margin = "auto";
+  img.style.marginTop = "25%";
+  img.src = "https://i.ibb.co/dfJrgS9/picure.png";
 
-    right.style.backgroundColor = "#EAD6CD";
-    left.style.backgroundColor = "#F7F7F7";
+  right.style.backgroundColor = "#EAD6CD";
+  left.style.backgroundColor = "#F7F7F7";
 
-    right.append(img);
+  right.append(img);
 };
 
 // ---------------------------------------------------------------------------
 
 // display login page on load
 const onload = () => {
-    const loginLayout = ` 
+  const loginLayout = ` 
         <section id="login-section">
         <h2>Login</h2>
         <form action="" id="loginForm" onsubmit="loginFormSubmit(event)">
@@ -188,171 +188,173 @@ const onload = () => {
         </div>
         <div id="social-medial-auth">
         <div>
-            <img src="../images/search.png" alt=""  onclick="googleLogin()"/>
+            <img src="./images/search.png" alt=""  onclick="googleLogin()"/>
         </div>
         <div>
-            <img src="../images/github.png" alt="" />
+            <img src="./images/github.png" alt="" />
         </div>
         <div>
-            <img src="../images/facebook.png" alt="" />
+            <img src="./images/facebook.png" alt="" />
         </div>
         </div>
         </section>
    
 `;
-    let right = document.getElementById("picture");
-    let left = document.getElementById("login-register-div");
-    let img = document.createElement("img");
-    img.style.display = "block";
-    img.style.width = "100%";
-    img.style.margin = "auto";
-    img.style.marginTop = "25%";
-    img.src = "https://i.ibb.co/dfJrgS9/picure.png";
+  let right = document.getElementById("picture");
+  let left = document.getElementById("login-register-div");
+  let img = document.createElement("img");
+  img.style.display = "block";
+  img.style.width = "100%";
+  img.style.margin = "auto";
+  img.style.marginTop = "25%";
+  img.src = "https://i.ibb.co/dfJrgS9/picure.png";
 
-    left.style.backgroundColor = "#EAD6CD";
-    right.style.backgroundColor = "#F7F7F7";
+  left.style.backgroundColor = "#EAD6CD";
+  right.style.backgroundColor = "#F7F7F7";
 
-    left.append(img);
-    right.innerHTML = loginLayout;
-
-    let loading_container = document.getElementById("loading-container");
-    loading_container.style.display = "block";
-
-    setTimeout(() => {
-        loading_container.style.display = "none";
-    }, 2000);
+  left.append(img);
+  right.innerHTML = loginLayout;
 };
 onload();
 
 // ---------------------------------------------------------------------------
 
+const baseURL = "https://budget-track-qc15.onrender.com";
+// const baseURL = "http://localhost:8080";
+
 // login form submit
 const loginFormSubmit = async (event) => {
-    event.preventDefault();
-    loading_container.style.display = "block";
+  event.preventDefault();
 
-    let form = document.getElementById("loginForm");
-    let formData = new FormData(form);
-    let data = Object.fromEntries(formData);
-    let response = await fetch(
-        "https://budget-track-qc15.onrender.com/users/login",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        }
-    );
+  let form = document.getElementById("loginForm");
+  let formData = new FormData(form);
+  let data = Object.fromEntries(formData);
+
+  loading_container.style.display = "block";
+  try {
+    let response = await fetch(`${baseURL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     let result = await response.json();
 
-    if (result.msg === "login successfully") {
-        loading_container.style.display = "none";
-        sessionStorage.setItem("token", result.token);
-        // sessionStorage.setItem("username", result.user.name);
-        localStorage.setItem("user", JSON.stringify(result.name))
-
-        Swal.fire({
-            title: "Logged In successfully!",
-            text: "You are logged in successfully.",
-            icon: "success",
-        })
-            .then((res) => {
-                window.location.assign("./index.html");
-            })
-            .catch((err) => {
-                alert("Something Went Wrong");
-            });
-    } else {
-        loading_container.style.display = "none";
-        Swal.fire({
-            title: "Wrong Credentials!",
-            text: "Try Again",
-            icon: "error",
-        }).then((res) => { console.log(res); });
+    if (result.message === "User does not exists, Please Register") {
+      Swal.fire({
+        title: "Please Register!",
+        text: "User does not exists",
+        icon: "error",
+      }).then(() => {
+        registerlink();
+      });
+      return;
     }
+
+    if (result.msg === "login successfully") {
+      sessionStorage.setItem("token", result.token);
+      localStorage.setItem("user", JSON.stringify(result.name));
+
+      Swal.fire({
+        title: "Logged In successfully!",
+        text: "You are logged in successfully.",
+        icon: "success",
+      })
+        .then((res) => {
+          window.location.assign("./index.html");
+        })
+        .catch((err) => {
+          alert("Something Went Wrong");
+        });
+    } else {
+      Swal.fire({
+        title: "Wrong Credentials!",
+        text: "Try Again",
+        icon: "error",
+      });
+    }
+  } catch (error) {
+    Swal.fire({
+      title: "Something went wrong!",
+      text: "Please try again later!",
+      icon: "error",
+    });
+    console.log(error);
+  } finally {
+    loading_container.style.display = "none";
+  }
 };
 
 // ---------------------------------------------------------------------------
 
 // register form submit
 const registerFormSubmit = async (event) => {
-    event.preventDefault();
-    loading_container.style.display = "block";
+  event.preventDefault();
 
-    let form = document.getElementById("registerForm");
-    let formData = new FormData(form);
-    console.log(formData);
-    let data = Object.fromEntries(formData);
-    console.log(data);
+  let form = document.getElementById("registerForm");
+  let formData = new FormData(form);
+  let data = Object.fromEntries(formData);
 
-    if (data.confirm_password == data.password) {
-        delete data.confirm_password;
-        fetch(
-            "https://budget-track-qc15.onrender.com/users/register",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: data.fname,
-                    age: data.age,
-                    email: data.email,
-                    password: data.password,
-                    occupation: data.occupation,
-                    // confirm_password: data.confirm_password,
-                    bank: data.bank
-                }),
-            }
-        ).then((res) => {
-            return res.json()
-        }).then((data) => {
-            console.log(data);
-            alert("Signup Suess")
-            window.location.reload()
-        }).catch((error) => {
-            console.log(error);
-        })
-    }
-    //     let result = await response.json();
-    //     console.log(result.msg);
-    //     if (result.msg == "Signup Successfully") {
+  if (data.confirm_password !== data.password) {
+    Swal.fire({
+      title: "Password Mismatched",
+      text: "Please Check Your Password",
+      icon: "error",
+    });
+    return;
+  }
 
-    //         loading_container.style.display = "none";
-    //         Swal.fire({
-    //             title: "Registered Successfully!",
-    //             text: "You are registered successfully.",
-    //             icon: "success",
-    //         }).then((res) => {
-    //             if (res.value) {
-    //                 window.location.reload();
-    //             } else {
-    //                 Swal.fire({
-    //                     title: "Wrong Credentials!",
-    //                     text: "Try Again",
-    //                     icon: "error",
-    //                 });
-    //             }
-    //         });
-    //     } else {
-    //         loading_container.style.display = "none";
-    //         Swal.fire({
-    //             title: "User Already Registered!",
-    //             text: "Please Login",
-    //             icon: "error",
-    //         });
-    //     }
-    // } else {
-    //     loading_container.style.display = "none";
-    //     Swal.fire({
-    //         title: "Password Mismatched",
-    //         text: "Please Try Again",
-    //         icon: "error",
-    //     }).then();
-    // }
+  const { confirm_password, lname, ...userInfo } = data;
 
-}
+  loading_container.style.display = "block";
+  fetch(`${baseURL}/users/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      if (data.message === "user successfully registered") {
+        Swal.fire({
+          title: "Registered Successfully!",
+          text: "You are registered successfully.",
+          icon: "success",
+        }).then((res) => {
+          window.location.reload();
+        });
+        return;
+      }
+
+      if (data.message === "User already exists") {
+        Swal.fire({
+          title: "User Already Registered!",
+          text: "Please Login",
+          icon: "error",
+        }).then((res) => {
+          window.location.reload();
+        });
+        return;
+      }
+
+      //   window.location.reload();
+    })
+    .catch((error) => {
+      Swal.fire({
+        title: "Something went wrong!",
+        text: "Please try again later!",
+        icon: "error",
+      });
+      console.log(error);
+    })
+    .finally(() => {
+      loading_container.style.display = "none";
+    });
+};
 
 // ---------------------------------------------------------------------------
 

@@ -8,6 +8,10 @@
     <title>Dashboard</title>
     <link rel="shortcut icon" href="images/income.png" type="image/x-icon">
     <link rel="stylesheet" href="./style/dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
+    "></script>
     <!-- <link rel="stylesheet" href="./style/style.css"> -->
     <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
         integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
@@ -22,16 +26,16 @@
         <a href="index.html"><img src="images/BudgetBud.png" alt="BudgetBuddy"></a>
         <ul class="nav-menu">
             <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a  onclick="checkValidation()" id="dash-id">DashBoard</a></li>
+            <li class="nav-item"><a onclick="checkValidation()" id="dash-id">DashBoard</a></li>
             <li class="nav-item"><a href="crypto.html">Crypto</a></li>
-            <li class="nav-item"><a onclick="toggleModal()" id="log" class="login-btn" href="login.html" >Login</a></li>
+            <li class="nav-item"><a onclick="toggleModal()" id="log" class="login-btn" href="login.html">Login</a></li>
         </ul>
 
         <div class="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-         </div>
+        </div>
 
     </nav>
     <div id="modal">
@@ -181,7 +185,7 @@
         <p>&copy; BudgetBuddy is a user friendly wesbite that provides user with budget tracking solutions friendly to their finance.</p>
         <p>Follow Us on Twitter & instagram</p>
     </div>  -->
-    
+
     <div id="over-lay-dash"></div>
 
     <div id="dash-loading-container">
