@@ -258,7 +258,7 @@ const loginFormSubmit = async (event) => {
             icon: "success",
         })
             .then((res) => {
-                window.location.assign("/frontend/index.html");
+                window.location.assign("./index.html");
             })
             .catch((err) => {
                 alert("Something Went Wrong");
