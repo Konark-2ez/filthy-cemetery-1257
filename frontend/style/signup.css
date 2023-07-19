@@ -160,8 +160,8 @@ body {
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 68%;
-    left: 52%;
+    top: 50%;
+    left: 50%;
     -webkit-animation: spin 0.5s linear infinite;
     animation: spin 0.5s linear infinite;
     background: linear-gradient(75% 75% 75% 75% #5107b9, #5107b9 75%);

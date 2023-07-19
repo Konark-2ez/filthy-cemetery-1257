@@ -1,40 +1,12 @@
- 💻Unique Project Name & logo :- Buget Buddy -  ![App Screenshot](https://i.postimg.cc/GtfLQrkD/Budget-Bud.png)
 ---
+⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
 
+---
+ 💻Unique Project Name & logo :- Buget Buddy - <br> <br> ![App Screenshot](https://i.postimg.cc/GtfLQrkD/Budget-Bud.png)
+---
 This is a real-time budget application that allows users to track their expenses and income in real-time. It is designed to be easy to use and provides users with an intuitive interface for managing their finances.This is a collaborative Project from Masai School in the Construct Week With the 5 team members within 5 Days.
 ---
 
-
-## ✨Collaboraters Names Are :-
-
-1. Konark Chandra Kumar(Team Lead)
-   >    - e-Mail: konarkkumar456@gmail.com
-   >    - GitHub: https://github.com/Konark-2ez
-
-
-2. Manideep Peddaboini
-   >    - e-Mail: peddaboinimanideep03@gmail.com
-   >    - GitHub: https://github.com/Manideep-0164 
-
-
-3. Sumit Kumar Yadav
-   >    - e-Mail: sy7985494155@gmail.com
-   >    - GitHub: https://github.com/sumit9235
-
-
-4. Shashwat Mahendra
-   >    - e-Mail: shashwatmahender2104@gmail.com
-   >    - GitHub: https://github.com/Shashwat2104 
-
-
-5. Abdul Haseeb T K
-   >    - e-Mail:  haseebshs@gmail.com
-   >    - GitHub: https://github.com/haseeb1233 
-
-
-
-
----
 
 ## 💫Tech Stack
 
@@ -124,8 +96,33 @@ This is a real-time budget application that allows users to track their expenses
 
 ---
 
----
-⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
+
+## ✨Collaboraters Names Are :-
+
+1. Konark Chandra Kumar(Team Lead)
+   >    - e-Mail: konarkkumar456@gmail.com
+   >    - GitHub: https://github.com/Konark-2ez
+
+
+2. Manideep Peddaboini
+   >    - e-Mail: peddaboinimanideep03@gmail.com
+   >    - GitHub: https://github.com/Manideep-0164 
+
+
+3. Sumit Kumar Yadav
+   >    - e-Mail: sy7985494155@gmail.com
+   >    - GitHub: https://github.com/sumit9235
+
+
+4. Shashwat Mahendra
+   >    - e-Mail: shashwatmahender2104@gmail.com
+   >    - GitHub: https://github.com/Shashwat2104 
+
+
+5. Abdul Haseeb T K
+   >    - e-Mail:  haseebshs@gmail.com
+   >    - GitHub: https://github.com/haseeb1233
+
 
 
 ----
