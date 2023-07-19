@@ -1,14 +1,11 @@
+⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
+ ---
  💻Unique Project Name & logo :- Buget Buddy - <br> <br> ![App Screenshot](https://i.postimg.cc/GtfLQrkD/Budget-Bud.png)
 ---
 This is a real-time budget application that allows users to track their expenses and income in real-time. It is designed to be easy to use and provides users with an intuitive interface for managing their finances.This is a collaborative Project from Masai School in the Construct Week With the 5 team members within 5 Days.
-
-
 ---
-⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
 
 
-
----
 ## 💫Tech Stack
 
 **Client:** HTML | CSS | Javascript | Bootsrap | External CSS library
