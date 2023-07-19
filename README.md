@@ -7,10 +7,9 @@ This is a real-time budget application that allows users to track their expenses
 
 ⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
 
+
+
 ---
-
-
-
 ## 💫Tech Stack
 
 **Client:** HTML | CSS | Javascript | Bootsrap | External CSS library
