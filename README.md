@@ -1,5 +1,5 @@
 ---
-⭐Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
+⭐🪄Deployed Link:- https://beautiful-bonbon-06d31f.netlify.app/index.html
 
 ---
  💻Unique Project Name & logo :- Buget Buddy - <br> <br> ![App Screenshot](https://i.postimg.cc/GtfLQrkD/Budget-Bud.png)
