@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const { BudgetModel } = require("../model/budget.model");
 const { UserModel } = require("../model/user.model");
-const { client } = require("../config/redis");
+// const { client } = require("../config/redis");    Redis removed, logout route is no longer needed
 
 const userRouter = express.Router();
 
@@ -93,17 +93,17 @@ userRouter.post("/login", async (req, res) => {
 
 // logout
 
-userRouter.post("/logout", async (req, res) => {
-  try {
-    const token = req.body.token;
-    if (!token) return res.status(403);
+// userRouter.post("/logout", async (req, res) => {
+//   try {
+//     const token = req.body.token;
+//     if (!token) return res.status(403);
 
-    await client.set(token, token);
-    res.json({ status: "logout successful" });
-  } catch (err) {
-    res.send(err.message);
-  }
-});
+//     await client.set(token, token);
+//     res.json({ status: "logout successful" });
+//   } catch (err) {
+//     res.send(err.message);
+//   }
+// });
 
 module.exports = {
   userRouter,
