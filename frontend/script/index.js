@@ -8,7 +8,6 @@ window.addEventListener("load", () => {
       .then((r) => r.json())
       .then((res) => {
         sessionStorage.setItem("apiRequested", "true");
-        console.log("hi");
       })
       .catch((err) => console.log(err));
   }
