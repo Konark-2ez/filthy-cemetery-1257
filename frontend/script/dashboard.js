@@ -16,9 +16,10 @@ window.addEventListener("load", () => {
 });
 
 const budgetInput = document.getElementById("d-budget");
-const expenseName = document.getElementById("expense-title");
+const chooseExpense = document.getElementById("choose-expense");
 const expenseAmt = document.getElementById("expense-amout");
-const expenseBtn = document.getElementById("add-expense");
+const expenseSubmitBtn = document.getElementById("expense-submit-form");
+const otherExpenseHolder = document.getElementById("expense-otherName-wrapper");
 const displayBudget = document.getElementById("budget-amount-input");
 const displayExpense = document.getElementById("expense-amount-input");
 const displayBalance = document.getElementById("balance-amount-input");
@@ -26,6 +27,9 @@ const historyContainer = document.getElementById("recent-expenses-history");
 let dashLoader = document.getElementById("dash-loading-container");
 let dashOverlay = document.getElementById("over-lay-dash");
 let socket;
+let totalData = [];
+let popupForm = document.getElementById("popupForm");
+let closePopup = document.getElementById("close-popup");
 
 dashOverlay.style.display = "block";
 dashLoader.style.display = "block";
@@ -50,14 +54,22 @@ if (!token) {
 
 // handling the errors
 socket.on("connect_error", (error) => {
-  console.log(error);
   if (error.message) {
     console.log(error.message);
-    alert(`Please Login`);
-    window.location.href = "./login.html";
+    Swal.fire({
+      title: "Please Login!",
+      text: "to use dashboard",
+      icon: "error",
+    }).then(() => {
+      window.location.href = "./login.html";
+    });
   } else {
     console.log(error);
-    alert(`Something went wrong`);
+    Swal.fire({
+      title: "Something went wrong!",
+      text: "Please try again later",
+      icon: "error",
+    });
   }
 });
 
@@ -77,24 +89,35 @@ socket.on("defaultBudget", (data) => {
       showRecentHistory(data.transactions);
     }
   } else {
-    alert("No Data");
+    Swal.fire({
+      title: "No Data!",
+      text: "",
+      icon: "warning",
+    });
   }
 });
 
 // Sending budget amount
-// budgetBtn.addEventListener('click', () => {
 function budgetBtn() {
-  if (!token) return alert("Please Login");
+  if (!token) {
+    return Swal.fire({
+      title: "Please Login!",
+      text: "",
+      icon: "error",
+    });
+  }
 
   let budgetamt = +budgetInput.value;
-  console.log(budgetamt);
-  if (!budgetamt) return alert("Please Provide Budget");
+  if (!budgetamt)
+    return Swal.fire({
+      title: "Please provide budget",
+      icon: "warning",
+    });
 
   dashOverlay.style.display = "block";
   dashLoader.style.display = "block";
   socket.emit("budgetAmt", budgetamt);
   budgetInput.value = null;
-  // })
 }
 
 // getting the updated data
@@ -102,7 +125,6 @@ socket.on("updatedBudget", (data) => {
   dashOverlay.style.display = "none";
   dashLoader.style.display = "none";
   const updatedBudget = JSON.parse(data);
-  console.log(updatedBudget);
 
   // Displaying the Stats
   displayStats(updatedBudget);
@@ -114,27 +136,56 @@ socket.on("updatedBudget", (data) => {
   }
 });
 
-// Sending the expenses
-expenseBtn.addEventListener("click", () => {
-  if (!token) return alert("Please Login");
+chooseExpense.addEventListener("change", () => {
+  if (chooseExpense.value === "other") {
+    otherExpenseHolder.innerHTML = null;
+    otherExpenseHolder.innerHTML =
+      '<input type="text" id="expense-title" class="budget-input-box" placeholder="Expenses" required>';
+  } else {
+    otherExpenseHolder.innerHTML = null;
+  }
+});
 
-  if (!expenseName.value || !expenseAmt.value)
-    return alert("Please Provide Required fields");
+// Adding the expenses
+expenseSubmitBtn.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!token)
+    return Swal.fire({
+      title: "Please Login!",
+      text: "",
+      icon: "error",
+    });
+
+  if (expenseAmt.value <= 0) {
+    return Swal.fire({
+      title: "Amount must be greater than 0!",
+      text: "",
+      icon: "error",
+    });
+  }
+
+  let expenseNameHolder;
+
+  if (chooseExpense.value === "other") {
+    const expenseName = document.getElementById("expense-title");
+    expenseNameHolder = expenseName.value;
+    otherExpenseHolder.innerHTML = null;
+  } else {
+    expenseNameHolder = chooseExpense.value;
+  }
 
   let expenses = {
     transactionDetails: {
-      name: expenseName.value,
+      name: expenseNameHolder,
       amount: +expenseAmt.value,
     },
     expenseAmt: +expenseAmt.value,
   };
 
-  console.log(expenses);
   dashOverlay.style.display = "block";
   dashLoader.style.display = "block";
   socket.emit("expenses", JSON.stringify(expenses));
-  expenseName.value = null;
-  expenseAmt.value = null;
+  expenseSubmitBtn.reset();
 });
 
 // Getting the Updated Expenses
@@ -155,9 +206,12 @@ socket.on("expenseDeduct", (data) => {
 
   // Checking if the expenses > budget
   if (updatedExpense.balance < 0) {
-    alert("Your expenses are exceeding your budget goals");
+    Swal.fire({
+      title: "Expenses exceeded!",
+      text: "",
+      icon: "warning",
+    });
   }
-  console.log(updatedExpense);
 });
 
 // Getting the Updated expenses history
@@ -165,8 +219,6 @@ socket.on("updatedExpenses", (data) => {
   dashOverlay.style.display = "none";
   dashLoader.style.display = "none";
   const updatedHistory = JSON.parse(data);
-
-  console.log(updatedHistory);
 
   // Displaying the Stats
   displayStats(updatedHistory);
@@ -176,6 +228,15 @@ socket.on("updatedExpenses", (data) => {
     emptyRecentHistory();
   } else {
     showRecentHistory(updatedHistory.transactions);
+  }
+
+  // Checking if the expenses > budget
+  if (updatedHistory.balance < 0) {
+    Swal.fire({
+      title: "Expenses exceeded budget!",
+      text: "",
+      icon: "warning",
+    });
   }
 });
 
@@ -191,13 +252,14 @@ function emptyRecentHistory() {
   let tr = document.createElement("tr");
   let noData = document.createElement("td");
   noData.setAttribute("class", "data-null");
-  noData.setAttribute("colspan", 3);
+  noData.setAttribute("colspan", 4);
   noData.innerText = "No Recent Transactions";
   tr.append(noData);
   historyContainer.append(tr);
 }
 
 function showRecentHistory(data) {
+  totalData = data;
   historyContainer.innerHTML = null; //
   data.forEach((ele, i) => {
     let tr = document.createElement("tr");
@@ -206,8 +268,15 @@ function showRecentHistory(data) {
     let amount = document.createElement("td");
     amount.innerText = ele.amount;
     let remove = document.createElement("td");
+    let edit = document.createElement("td");
     let deleteIcon = document.createElement("img");
-    deleteIcon.setAttribute("src", "./images/delete-svgrepo-com.png");
+    deleteIcon.setAttribute(
+      "src",
+      "./images/cancel-delete-remove-svgrepo-com.png"
+    );
+    let editIcon = document.createElement("img");
+    editIcon.setAttribute("src", "./images/edit-pen-write-1-svgrepo-com.png");
+    editIcon.addEventListener("click", () => openEditPopup(ele._id, data));
 
     deleteIcon.addEventListener("click", () => {
       if (!data[0]) return emptyRecentHistory();
@@ -216,8 +285,7 @@ function showRecentHistory(data) {
         if (i === index) return false;
         return true;
       });
-
-      // console.log(ele.amount)
+      totalData = filtered;
       dashOverlay.style.display = "block";
       dashLoader.style.display = "block";
 
@@ -229,18 +297,69 @@ function showRecentHistory(data) {
     });
 
     remove.append(deleteIcon);
-
-    tr.append(name, amount, remove);
+    edit.append(editIcon);
+    tr.append(name, amount, remove, edit);
 
     historyContainer.append(tr);
   });
 }
 
+let details = {};
+function openEditPopup(itemId, data) {
+  let item = data.find((item) => item._id === itemId);
+
+  if (item) {
+    details = {
+      itemId,
+      data,
+      prevAmt: item.amount,
+    };
+
+    document.getElementById("editName").value = item.name;
+    document.getElementById("editAmount").value = item.amount;
+    dashOverlay.style.display = "block";
+    popupForm.style.display = "flex";
+  }
+}
+
+popupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let editName = document.getElementById("editName").value;
+  let editAmount = parseInt(document.getElementById("editAmount").value);
+
+  let { itemId, data, prevAmt } = details;
+
+  let newData = data.map((item) => {
+    if (item._id === itemId) {
+      return {
+        // only name and amount will change, rest remains same
+        ...item,
+        name: editName,
+        amount: editAmount,
+      };
+    } else {
+      return item;
+    }
+  });
+
+  socket.emit(
+    "updateExpenses",
+    JSON.stringify({ newData, amt: editAmount - prevAmt })
+  );
+  popupForm.style.display = "none";
+  dashLoader.style.display = "block";
+});
+
+closePopup.addEventListener("click", () => {
+  popupForm.style.display = "none";
+  dashOverlay.style.display = "none";
+});
+
 // INDEX.JS CODE
 
 // Allowing the user only if logged In
 let datas = JSON.parse(localStorage.getItem("user")) || null;
-// const token = sessionStorage.getItem("token") || null;
 
 //logout
 const modal = document.getElementById("modal");

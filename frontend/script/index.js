@@ -1,4 +1,6 @@
 const baseURL = "https://budget-track-qc15.onrender.com";
+// const baseURL = "http://localhost:8080";
+
 const isApiRequested = sessionStorage.getItem("apiRequested") || null;
 
 window.addEventListener("load", () => {

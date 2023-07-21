@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 app.use("/users", userRouter);
 
 // app.get("/", auth, (req, res) => {
-//   console.log(req.user);
 //   res.sendFile(
 //     "C:/Users/ABDUL HASEEB T K/OneDrive/Desktop/filthy-cemetery-1257/frontend/index.html"
 //   );
@@ -76,7 +75,6 @@ io.on("connection", async (socket) => {
   // Transactions Update
   socket.on("removeExpenses", async (data) => {
     data = JSON.parse(data);
-    // console.log(data.amt);
 
     userData.transactions = data.filtered;
     userData.expenses -= data.amt;
@@ -89,7 +87,35 @@ io.on("connection", async (socket) => {
     );
   });
 
-  // console.log(userData)
+  socket.on("updateExpenses", async (data) => {
+    data = JSON.parse(data);
+
+    userData.transactions = data.newData;
+    userData.expenses += data.amt;
+    userData.balance -= data.amt;
+
+    // firstly update the budget
+    await BudgetModel.findOneAndUpdate({ user: userEmail }, userData);
+
+    // const updateQuery = {
+    //   $set: {
+    //     "transactions.$.name": data.item.name,
+    //     "transactions.$.amount": data.item.amount,
+    //   },
+    // };
+    // const options = { new: true }; // get the data only after updating in DB
+
+    // secondly update the transaction details
+    // await BudgetModel.findOneAndUpdate(
+    //   { user: userEmail, "transactions._id": id },
+    //   updateQuery,
+    //   options
+    // );
+    socket.emit(
+      "updatedExpenses",
+      JSON.stringify(await BudgetModel.findOne({ user: userEmail }))
+    );
+  });
 });
 
 // ***************************** new - socket ******************************** //
@@ -97,11 +123,9 @@ io.on("connection", async (socket) => {
 // refresh token
 app.get("/getnewtoken", (req, res) => {
   const refreshtoken = req.cookies.refreshtoken;
-  console.log(refreshtoken);
   try {
     if (refreshtoken) {
       const decoded = jwt.verify(refreshtoken, process.env.REFRESH_SECRET);
-      console.log(decoded);
       if (decoded) {
         const token = jwt.sign(
           { userId: decoded.userId },
@@ -142,7 +166,6 @@ app.get(
     const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
-    console.log(token);
     res.cookie("token", token);
     // res.redirect('/');
     res.sendFile(

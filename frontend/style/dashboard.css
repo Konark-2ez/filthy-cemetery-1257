@@ -14,6 +14,32 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+#popupForm {
+    width: 30%;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 35;
+}
+
+#popupForm>input {
+    font-size: 1rem;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    margin: 0px 0px 2px;
+    border-radius: 5px;
+    outline: none;
+    border-width: thin;
+}
 
 /* // Loader  */
 #dash-loading-container {
@@ -95,7 +121,7 @@ input::-webkit-inner-spin-button {
     z-index: 5;
 }
 
-#modal{
+#modal {
     display: none;
     align-items: center;
     justify-content: center;
@@ -113,7 +139,7 @@ input::-webkit-inner-spin-button {
     border-bottom-left-radius: 5px;
 }
 
-#logout{
+#logout {
     /* display: none; */
     background-color: red;
     border-color: transparent;
@@ -126,7 +152,7 @@ input::-webkit-inner-spin-button {
     font-family: var(--font-family);
 }
 
-.logout-overlay{
+.logout-overlay {
     position: fixed;
     top: 65px;
     background-color: #3341555e;
@@ -136,18 +162,18 @@ input::-webkit-inner-spin-button {
     visibility: hidden;
 }
 
-.visible-logout-overlay{
+.visible-logout-overlay {
     z-index: 10;
     visibility: visible;
 }
 
-.hamburger{
+.hamburger {
     margin-right: 6px;
     display: none;
     cursor: pointer;
 }
 
-.bar{
+.bar {
     display: block;
     width: 25px;
     height: 3px;
@@ -190,7 +216,7 @@ input::-webkit-inner-spin-button {
     color: var(--text-color);
 }
 
-.navbar ul li:last-child a{
+.navbar ul li:last-child a {
     margin-right: 6px;
 }
 
@@ -275,10 +301,10 @@ hr {
 }
 
 #add-budget,
-#expense-title,
 #expense-amout {
     display: block;
 }
+
 
 .budget-input-box {
     font-size: 1rem;
@@ -411,12 +437,20 @@ hr {
     text-overflow: ellipsis;
 }
 
-.expenses-history>thead>tr>th:nth-child(3) {
-    width: 25%;
+.expenses-history>thead>tr>th:nth-child(1) {
+    width: 30%;
 }
 
 .expenses-history>thead>tr>th:nth-child(2) {
-    width: 30%;
+    width: 20%;
+}
+
+.expenses-history>thead>tr>th:nth-child(3) {
+    width: 15%;
+}
+
+.expenses-history>thead>tr>th:nth-child(4) {
+    width: 15%;
 }
 
 .expenses-history>tbody>tr>td>img {
@@ -442,31 +476,37 @@ hr {
 }
 
 @media (max-width: 954px) {
+
     /* .nav-menu{
         display: none;
     } */
-    .navbar ul>li{
+    .navbar ul>li {
         margin-left: 0;
     }
-    .navbar{
+
+    .navbar {
         padding: 0px 41px;
     }
-    .hamburger{
+
+    .hamburger {
         display: block;
         height: 34px;
         margin-top: 5px;
     }
-   
-    .hamburger.active .bar:nth-child(2){
+
+    .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }
-    .hamburger.active .bar:nth-child(1){
+
+    .hamburger.active .bar:nth-child(1) {
         transform: translateY(2px) rotate(45deg);
     }
-    .hamburger.active .bar:nth-child(3){
+
+    .hamburger.active .bar:nth-child(3) {
         transform: translateY(2px) rotate(-45deg);
     }
-    .nav-menu{
+
+    .nav-menu {
         position: fixed;
         right: -100%;
         top: 64px;
@@ -479,12 +519,14 @@ hr {
         width: 230px;
         border-radius: 6px;
         transition: 0.3s;
-        
+
     }
-    .nav-item{
+
+    .nav-item {
         margin: 16px 0;
     }
-    .nav-menu.active{
+
+    .nav-menu.active {
         right: 1px;
         z-index: 100;
     }
@@ -512,42 +554,51 @@ hr {
     .left-cont>.budget-box {
         width: 46%;
     }
+
+    #popupForm {
+        width: 40%;
+    }
+}
+
+@media (max-width: 650px) {
+    #popupForm {
+        width: 50%;
+    }
 }
 
 @media (max-width: 550px) {
-    .left-cont{
+    .left-cont {
         flex-direction: column;
     }
 
-    .left-cont > .budget-box{
+    .left-cont>.budget-box {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    .navbar img{
+    .navbar img {
         width: 170px;
     }
-
 
 }
 
 @media (max-width:500px) {
-    .display-budget-plan{
+    .display-budget-plan {
         font-size: 0.8rem;
     }
 
     .budget-display>.green,
     .budget-display>.red,
     .budget-display>.pink,
-    .data-null{
+    .data-null {
         font-size: 1.5rem;
     }
 
-    .expenses-history{
+    .expenses-history {
         font-size: 0.9rem;
     }
 
-    .display-budget-plan>.budget-display .budget-img{
+    .display-budget-plan>.budget-display .budget-img {
         width: 54px;
     }
 
@@ -555,8 +606,12 @@ hr {
         width: 24px;
     }
 
-    .welcome-header{
+    .welcome-header {
         font-size: 1rem;
+    }
+
+    #popupForm {
+        width: 58%;
     }
 
 }
