@@ -1,4 +1,19 @@
-// const baseURL = 'https://budget-track-qc15.onrender.com';
+const baseURL = "https://budget-track-qc15.onrender.com";
+// const baseURL = "http://localhost:8080";
+
+const isApiRequested = sessionStorage.getItem("apiRequested") || null;
+
+window.addEventListener("load", () => {
+  // Waking up the backend server
+  if (!isApiRequested) {
+    fetch(`${baseURL}/`)
+      .then((r) => r.json())
+      .then((res) => {
+        sessionStorage.setItem("apiRequested", "true");
+      })
+      .catch((err) => console.log(err));
+  }
+});
 
 // Allowing the user only if logged In
 let datas = JSON.parse(localStorage.getItem("user")) || null;

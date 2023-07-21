@@ -58,11 +58,22 @@
                 <button id="add-budget" onclick="budgetBtn()" class="add-budget-button">Add Budget</button>
             </div>
             <div class="expense-input budget-box">
-                <label for="expense-title">Add Expenses</label><input type="text" id="expense-title"
-                    class="budget-input-box" placeholder="Expenses">
-                <label for="expense-amout">Amount</label><input type="number" id="expense-amout" placeholder="0.00"
-                    class="budget-input-box">
-                <button id="add-expense" class="add-budget-button">Add Expense</button>
+                <form id="expense-submit-form">
+                    <label for="choose-expense">Add Expenses</label>
+                    <select class="budget-input-box" id="choose-expense" required>
+                        <option value="">Expenses</option>
+                        <option value="gas bill">Electricity bill</option>
+                        <option value="water bill">Water bill</option>
+                        <option value="Internet bill">Internet bill</option>
+                        <option value="Fuel bill">Fuel bill</option>
+                        <option value="Restaurant bill">Restaurant bill</option>
+                        <option value="other">other</option>
+                    </select>
+                    <div id="expense-otherName-wrapper"></div>
+                    <label for="expense-amout">Amount</label><input type="number" id="expense-amout" placeholder="0.00"
+                        class="budget-input-box" required>
+                    <button id="add-expense" type="submit" class="add-budget-button">Add Expense</button>
+                </form>
             </div>
         </div>
         <div class="right-cont">
@@ -96,6 +107,7 @@
                             <th>Expense Title</th>
                             <th>Expense Value</th>
                             <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody id="recent-expenses-history">
@@ -111,7 +123,14 @@
         </div>
     </div>
 
-
+    <div id="expense-update-container">
+        <form id="popupForm">
+            <input type="text" class="expense-edit-input" id="editName" />
+            <input type="number" class="expense-edit-input" id="editAmount" />
+            <input type="submit" value="SAVE" />
+            <input type="button" value="CANCEL" id="close-popup">
+        </form>
+    </div>
     <!-- **************************************** NAV - BAR **************************************** -->
 
     <!-- <footer class="footer">
