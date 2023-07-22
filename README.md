@@ -12,7 +12,7 @@ This is a real-time budget application that allows users to track their expenses
 
 **Client:** HTML | CSS | Javascript | Bootsrap | External CSS library
 
-**Server:** Node.js | Express.js | MongoDB | WebRTC | PeerJS library | Socket.io | Bcrypt | PassPort | cors | Redis | JWT
+**Server:** Node.js | Express.js | MongoDB | PeerJS library | Socket.io | Bcrypt | PassPort | cors | Redis | JWT
 
 **github:** To maintain repository and collabration and version control.
 
@@ -49,7 +49,6 @@ This is a real-time budget application that allows users to track their expenses
 - Real-time expense and income tracking
 
 - Intuitive and easy-to-use interface
-- Cart Page
 
 - Budget tracking and analysis
 
