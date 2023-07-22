@@ -1,4 +1,5 @@
-// const { json } = require("body-parser");
+const baseURL = "https://budget-track-qc15.onrender.com";
+// const baseURL = "http://localhost:8080";
 
 let loading_container = document.getElementById("loading-container");
 
@@ -218,9 +219,6 @@ const onload = () => {
 onload();
 
 // ---------------------------------------------------------------------------
-
-const baseURL = "https://budget-track-qc15.onrender.com";
-// const baseURL = "http://localhost:8080";
 
 // login form submit
 const loginFormSubmit = async (event) => {

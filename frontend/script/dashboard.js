@@ -27,7 +27,6 @@ const historyContainer = document.getElementById("recent-expenses-history");
 let dashLoader = document.getElementById("dash-loading-container");
 let dashOverlay = document.getElementById("over-lay-dash");
 let socket;
-let totalData = [];
 let popupForm = document.getElementById("popupForm");
 let closePopup = document.getElementById("close-popup");
 
@@ -259,7 +258,6 @@ function emptyRecentHistory() {
 }
 
 function showRecentHistory(data) {
-  totalData = data;
   historyContainer.innerHTML = null; //
   data.forEach((ele, i) => {
     let tr = document.createElement("tr");
@@ -285,7 +283,6 @@ function showRecentHistory(data) {
         if (i === index) return false;
         return true;
       });
-      totalData = filtered;
       dashOverlay.style.display = "block";
       dashLoader.style.display = "block";
 
