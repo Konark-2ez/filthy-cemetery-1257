@@ -78,8 +78,7 @@
 
 # Dashboard
 
-<!-- ![App Screenshot](https://i.postimg.cc/cLMhtJ7r/Screenshot-2023-05-13-113305.png) -->
-<img src="./frontend/images//budgetbuddy-dashboard.png">
+![App Screenshot](https://i.postimg.cc/cLMhtJ7r/Screenshot-2023-05-13-113305.png)
 
 # Crypto
 
