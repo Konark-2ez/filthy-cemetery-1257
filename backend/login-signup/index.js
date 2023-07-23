@@ -27,11 +27,9 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter);
 
-// app.get("/", auth, (req, res) => {
-//   res.sendFile(
-//     "C:/Users/ABDUL HASEEB T K/OneDrive/Desktop/filthy-cemetery-1257/frontend/index.html"
-//   );
-// });
+// app.get("/",auth,(req,res)=>{
+//     res.sendFile("C:/Users/ABDUL HASEEB T K/OneDrive/Desktop/filthy-cemetery-1257/frontend/index.html")
+// })
 
 // ***************************** new - socket ******************************** //
 
@@ -50,7 +48,7 @@ io.on("connection", async (socket) => {
         if (err) {
           console.error("Error fetching data from Redis:", err);
           reject(err);
-        } else if (cachedData) {
+        } else if (cachedData !== null) {
           // Data found in cache
           resolve(JSON.parse(cachedData));
         } else {
@@ -64,6 +62,7 @@ io.on("connection", async (socket) => {
       });
     });
   };
+
   // Get the default data
   const userData = await fetchUserData();
   socket.emit("defaultBudget", JSON.stringify(userData));
@@ -72,12 +71,11 @@ io.on("connection", async (socket) => {
   socket.on("budgetAmt", async (budgetamt) => {
     userData.budget = budgetamt;
     userData.balance = budgetamt - userData.expenses;
+
     await BudgetModel.findOneAndUpdate({ user: userEmail }, userData);
-
-    // Update the cached data
-    client.setex(userEmail, 3600, JSON.stringify(userData));
-
-    socket.emit("updatedBudget", JSON.stringify(await fetchUserData()));
+    client.setex(userEmail, 3600, JSON.stringify(userData)); // Update the cached data
+    const upDatedUserData = await fetchUserData();
+    socket.emit("updatedBudget", JSON.stringify(upDatedUserData));
   });
 
   // Expenses Upadate
@@ -90,11 +88,9 @@ io.on("connection", async (socket) => {
     userData.balance = userData.budget - userData.expenses;
 
     await BudgetModel.findOneAndUpdate({ user: userEmail }, userData);
-
-    // Update the cached data
-    client.setex(userEmail, 3600, JSON.stringify(userData));
-
-    socket.emit("expenseDeduct", JSON.stringify(await fetchUserData()));
+    client.setex(userEmail, 3600, JSON.stringify(userData)); // Update the cached data
+    const userDataAfterAddingExpense = await fetchUserData();
+    socket.emit("expenseDeduct", JSON.stringify(userDataAfterAddingExpense));
   });
 
   // Transactions Update
@@ -106,11 +102,9 @@ io.on("connection", async (socket) => {
     userData.balance += data.amt;
 
     await BudgetModel.findOneAndUpdate({ user: userEmail }, userData);
-
-    // Update the cached data
-    client.setex(userEmail, 3600, JSON.stringify(userData));
-
-    socket.emit("updatedExpenses", JSON.stringify(await fetchUserData()));
+    client.setex(userEmail, 3600, JSON.stringify(userData)); // Update the cached data
+    const userDataAfterRemovedExpense = await fetchUserData();
+    socket.emit("updatedExpenses", JSON.stringify(userDataAfterRemovedExpense));
   });
 
   socket.on("updateExpenses", async (data) => {
@@ -120,13 +114,10 @@ io.on("connection", async (socket) => {
     userData.expenses += data.amt;
     userData.balance -= data.amt;
 
-    // firstly update the budget
     await BudgetModel.findOneAndUpdate({ user: userEmail }, userData);
-
-    // Update the cached data
-    client.setex(userEmail, 3600, JSON.stringify(userData));
-
-    socket.emit("updatedExpenses", JSON.stringify(await fetchUserData()));
+    client.setex(userEmail, 3600, JSON.stringify(userData)); // Update the cached data
+    const updatedExpenseData = await fetchUserData();
+    socket.emit("updatedExpenses", JSON.stringify(updatedExpenseData));
   });
 });
 

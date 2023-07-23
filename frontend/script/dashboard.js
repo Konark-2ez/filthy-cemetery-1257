@@ -57,7 +57,7 @@ socket.on("connect_error", (error) => {
     console.log(error.message);
     Swal.fire({
       title: "Please Login!",
-      text: "to use dashboard",
+      text: "Session expired.",
       icon: "error",
     }).then(() => {
       window.location.href = "./login.html";
@@ -139,7 +139,7 @@ chooseExpense.addEventListener("change", () => {
   if (chooseExpense.value === "other") {
     otherExpenseHolder.innerHTML = null;
     otherExpenseHolder.innerHTML =
-      '<input type="text" id="expense-title" class="budget-input-box" placeholder="Expenses" required>';
+      '<input type="text" id="expense-title" class="budget-input-box" placeholder="Expenses" pattern="^(?![0-9]+$).+" title="Expected valid expense" required>';
   } else {
     otherExpenseHolder.innerHTML = null;
   }
